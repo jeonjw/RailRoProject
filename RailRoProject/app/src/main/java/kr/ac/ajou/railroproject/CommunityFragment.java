@@ -7,10 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * Created by jinwoo on 2017. 8. 10..
- */
-
 public class CommunityFragment extends Fragment {
     @Nullable
     @Override
