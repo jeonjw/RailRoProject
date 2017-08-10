@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "191396403534",
+    "firebase_url": "https://railroproject.firebaseio.com",
+    "project_id": "railroproject",
+    "storage_bucket": "railroproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:191396403534:android:c4cc32f632b36b4e",
+        "android_client_info": {
+          "package_name": "kr.ac.ajou.railroproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "191396403534-ii4gcmf520bckm2a9uvuk12kd5nng1nh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-s6-0aKeEhtIV4OblU0WkEHVIQSjcoYc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
