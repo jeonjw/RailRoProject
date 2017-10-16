@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         fm.beginTransaction().add(R.id.main_container, courseFragment).commit();
 
 
+
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.main_bottom_navigation);
         BottomNavigationViewHelper.removeShiftMode(bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
