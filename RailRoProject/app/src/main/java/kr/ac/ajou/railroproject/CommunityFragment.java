@@ -7,15 +7,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by jinwoo on 2017. 8. 10..
  */
 
-public class CommunityFragment extends Fragment {
-    @Nullable
+public class CommunityFragment extends TabFragment {
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_community, container, false);
-        return view;
+    void setTabText() {
+        getTabLayout().addTab(getTabLayout().newTab().setText("팁"));
+        getTabLayout().addTab(getTabLayout().newTab().setText("동행"));
+        getTabLayout().addTab(getTabLayout().newTab().setText("추천"));
+    }
+
+    @Override
+    List<Fragment> setFragmentList() {
+        List<Fragment> fragmentList = new ArrayList<>();
+        fragmentList.add(new TourlistSpotFragment());
+        fragmentList.add(new FestivalFragment());
+        fragmentList.add(new RestaurantFragment());
+        fragmentList.add(new AccommodationFragment());
+        return fragmentList;
     }
 }
