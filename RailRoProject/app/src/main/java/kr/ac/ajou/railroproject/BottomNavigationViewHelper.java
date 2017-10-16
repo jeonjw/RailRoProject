@@ -1,8 +1,6 @@
 package kr.ac.ajou.railroproject;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
@@ -11,7 +9,6 @@ import android.util.Log;
 import java.lang.reflect.Field;
 
 class BottomNavigationViewHelper {
-
 
     @SuppressLint("RestrictedApi")
     static void removeShiftMode(BottomNavigationView view) {

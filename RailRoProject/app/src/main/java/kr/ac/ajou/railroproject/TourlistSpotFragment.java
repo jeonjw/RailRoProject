@@ -6,10 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * Created by jinwoo on 2017. 8. 10..
- */
-
 public class TourlistSpotFragment extends android.support.v4.app.Fragment {
 
     @Nullable

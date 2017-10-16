@@ -5,10 +5,6 @@ import android.support.v4.app.Fragment;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by jinwoo on 2017. 8. 10..
- */
-
 public class TravelInfoTabFragment extends TabFragment {
     @Override
     void setTabText() {
