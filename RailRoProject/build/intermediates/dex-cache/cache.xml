@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="/Users/jinwoo/.android/build-cache/f5bba496d91ab293c86264792363734c74fbb690/output/jars/classes.jar"
+        jar="/Users/jinwoo/.android/build-cache/7d9e35e4f93447a8fc353a44fe7f753d0f3461fc/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
         sha1="6f65c144283b31b4b9a70e6e7aa4c4a1c897d4b8">
-        <dex dex="/Users/jinwoo/Documents/SocialAppProject/RailRoProject/RailRoProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e966018d06d94269728b8acfa874c4a09b74a33f/classes.dex" />
+        <dex dex="/Users/jinwoo/Documents/SocialAppProject/RailRoProject/RailRoProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5df0da347d412f6d8d12f7f80c4fb493d1da5f2c/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/jinwoo/.android/build-cache/b22afaf3ada32772f17fff6660a8964af5d5155c/output/jars/classes.jar"
+        jar="/Users/jinwoo/.android/build-cache/1b07b1157910aa9828638364ec782968628dda67/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="1941832901fc4e7a93300b53762e9f65d7650b99">
-        <dex dex="/Users/jinwoo/Documents/SocialAppProject/RailRoProject/RailRoProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e1037c1d561d0305545d2be30037b11f4da5c518/classes.dex" />
+        sha1="0dc8ab07eeceda5e99b305c8069765056b6e5c9d">
+        <dex dex="/Users/jinwoo/Documents/SocialAppProject/RailRoProject/RailRoProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_dbd7638335e98b27cd576f31f8a658ab392b0a77/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -30,6 +30,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/jinwoo/.android/build-cache/c14cf137f4828288a47dc38632fa071cac22eb33/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="42df48c7305b08b14fa0e84561091b0c24d70d26">
+        <dex dex="/Users/jinwoo/Documents/SocialAppProject/RailRoProject/RailRoProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_46f14440ab3172cf49c01889fc3cfaf6bfa39110/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/jinwoo/.android/build-cache/e83474c0af1a9a68b64fa3a5912948859adf21e7/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -39,21 +48,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/jinwoo/.android/build-cache/1efaf2319076ea966c1d5ddf50875a91b07be336/output/jars/classes.jar"
+        jar="/Users/jinwoo/.android/build-cache/c8d1dcaef8df53b747f9c4591b0e52466d42c597/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="0dc8ab07eeceda5e99b305c8069765056b6e5c9d">
-        <dex dex="/Users/jinwoo/Documents/SocialAppProject/RailRoProject/RailRoProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7a98256de15f0a8aaed409b0546704075d6018a3/classes.dex" />
+        sha1="ea4b54dcbfe5ac05efb0a314105f07258118d3a7">
+        <dex dex="/Users/jinwoo/Documents/SocialAppProject/RailRoProject/RailRoProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f4937320918f9f584e0f7c58ead996f695824c76/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/jinwoo/.android/build-cache/d7f26ace599aa957224f25bf2380d89fe2273a8e/output/jars/classes.jar"
+        jar="/Users/jinwoo/.android/build-cache/38c352b54b7f08bc91009655cf2e4c8ee3e42e1c/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="4ef8ab5fee042023018249474bc93bd4b2b9c17e">
-        <dex dex="/Users/jinwoo/Documents/SocialAppProject/RailRoProject/RailRoProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_1141945b1de51afdafff6a0830c9df012c390a4a/classes.dex" />
+        sha1="1941832901fc4e7a93300b53762e9f65d7650b99">
+        <dex dex="/Users/jinwoo/Documents/SocialAppProject/RailRoProject/RailRoProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0c170bccf7e3f0f404e0714f182fa0867813857e/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -75,21 +84,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/jinwoo/.android/build-cache/83853db54126ef6d9433c83435d9c61acc06bcd0/output/jars/classes.jar"
+        jar="/Users/jinwoo/.android/build-cache/c321f4d5f74506125c2beacc6ecc6c35edb003c5/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="ea4b54dcbfe5ac05efb0a314105f07258118d3a7">
-        <dex dex="/Users/jinwoo/Documents/SocialAppProject/RailRoProject/RailRoProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_40c5645b29e8c2aaec4f639117dffc4ef938bb77/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/jinwoo/.android/build-cache/130284bdf32afec2d50ff10fbedd3eae14701784/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="cc178928721f3222b3b06bdfbd9497378ccb9792">
-        <dex dex="/Users/jinwoo/Documents/SocialAppProject/RailRoProject/RailRoProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_996036e7166e7234f12f6c9aeb18fd78b5829e41/classes.dex" />
+        sha1="4ef8ab5fee042023018249474bc93bd4b2b9c17e">
+        <dex dex="/Users/jinwoo/Documents/SocialAppProject/RailRoProject/RailRoProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_695db920001e6c620f3afc05b014164b86fc9bc3/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -97,17 +97,17 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="8ef5bbc841f655c5eef23f1ac7694020e015bdf9">
+        sha1="6a969176bc5444894b80d11912bf4982f252838d">
         <dex dex="/Users/jinwoo/Documents/SocialAppProject/RailRoProject/RailRoProject/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_1c52cd9502ba831ec54b0776bcbe77473520cb9f/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/jinwoo/.android/build-cache/4ae8b6f29cf2a6b45d0cf91b59abc6c08144c7e0/output/jars/classes.jar"
+        jar="/Users/jinwoo/.android/build-cache/f10b00c8575bb58b1676236fa45cc8f0dc59bdd3/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="42df48c7305b08b14fa0e84561091b0c24d70d26">
-        <dex dex="/Users/jinwoo/Documents/SocialAppProject/RailRoProject/RailRoProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_099e81f550f71df1a48558c3a3474fd62b935380/classes.dex" />
+        sha1="cc178928721f3222b3b06bdfbd9497378ccb9792">
+        <dex dex="/Users/jinwoo/Documents/SocialAppProject/RailRoProject/RailRoProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_fc332af6e339019abfefefd27e6a6a1a27e06c02/classes.dex" />
     </item>
 
 </items>

@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_my_info:
                         fragment = new MyInfoFragment();
                         break;
+                    default:
+                        break;
                 }
 
                 fm.beginTransaction().replace(R.id.main_container, fragment).commit();
