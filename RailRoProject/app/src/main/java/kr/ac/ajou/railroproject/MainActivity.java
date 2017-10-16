@@ -1,5 +1,6 @@
 package kr.ac.ajou.railroproject;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -8,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,9 +18,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        TextView toolbarTextView = toolbar.findViewById(R.id.toolbar_title_text_view);
 
-        toolbar.setTitle("TEST");
+        toolbarTextView.setText("RAILRONET");
         setSupportActionBar(toolbar);
 
         final FragmentManager fm = getSupportFragmentManager();
@@ -26,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         fm.beginTransaction().add(R.id.main_container, courseFragment).commit();
 
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.main_bottom_navigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.main_bottom_navigation);
         BottomNavigationViewHelper.removeShiftMode(bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

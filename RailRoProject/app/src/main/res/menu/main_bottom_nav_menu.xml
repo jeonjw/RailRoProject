@@ -5,25 +5,25 @@
         android:id="@+id/nav_course"
         app:showAsAction="ifRoom"
         android:enabled="true"
-        android:icon="@drawable/like"
+        android:icon="@drawable/ic_rail"
         android:title="course" />
     <item
         app:showAsAction="ifRoom"
         android:id="@+id/nav_info"
         android:enabled="true"
-        android:icon="@drawable/like"
+        android:icon="@drawable/ic_info"
         android:title="info" />
     <item
         app:showAsAction="ifRoom"
         android:id="@+id/nav_community"
         android:enabled="true"
-        android:icon="@drawable/like"
+        android:icon="@drawable/ic_community"
         android:title="commu" />
 
     <item
         app:showAsAction="ifRoom"
         android:id="@+id/nav_my_info"
         android:enabled="true"
-        android:icon="@drawable/like"
+        android:icon="@drawable/ic_my_info"
         android:title="myin" />
 </menu>

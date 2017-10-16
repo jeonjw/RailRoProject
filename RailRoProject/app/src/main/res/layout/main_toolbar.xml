@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_toolbar"
+    android:layout_width="match_parent"
+    android:background="#2EA8C9"
+    android:layout_height="wrap_content"
+    android:title="@string/app_name">
+
+    <TextView
+        android:id="@+id/toolbar_title_text_view"
+        android:textColor="@color/colorWhite"
+        tools:text="RAILRONET"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</android.support.v7.widget.Toolbar>
