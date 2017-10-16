@@ -33,6 +33,11 @@ public class ArticleRecyclerAdapter extends RecyclerView.Adapter{
     }
 
     @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
+    }
+
+    @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.articleCategory.setText("");
         holder.articleTitle.setText("");
