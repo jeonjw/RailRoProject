@@ -10,6 +10,9 @@ public class Course {
     private int likeCount;
     private List<Station> stationList;
 
+    public Course() {
+    }
+
     public String getTitle() {
         return title;
     }
