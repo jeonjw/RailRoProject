@@ -13,6 +13,9 @@ public class CourseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_course, container, false);
+
+        DBTestModel dbTestModel = new DBTestModel();
+        dbTestModel.pushData();
         return view;
     }
 }
