@@ -1,12 +1,15 @@
 package kr.ac.ajou.railroproject;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
-/**
- * Created by admin on 2017-10-16.
- */
 
 public class CourseModel {
     private FirebaseRecyclerAdapter<Course, CourseViewHolder> adapter;
@@ -14,13 +17,27 @@ public class CourseModel {
     public CourseModel() {
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-        adapter = new FirebaseRecyclerAdapter<Course, CourseViewHolder>(Course.class, R.layout.list_item_course,
-                CourseViewHolder.class, databaseReference.child("Course")) {
+
+        Query query = databaseReference
+                .child("Course");
+
+        FirebaseRecyclerOptions<Course> options =
+                new FirebaseRecyclerOptions.Builder<Course>()
+                        .setQuery(query, Course.class)
+                        .build();
+
+        adapter = new FirebaseRecyclerAdapter<Course, CourseViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(CourseViewHolder holder, int position, Course model) {
+                holder.bindCourse(getItem(position));
+            }
 
             @Override
-            protected void populateViewHolder(CourseViewHolder viewHolder, Course model, int position) {
+            public CourseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.list_item_course, parent, false);
 
-                viewHolder.bindCourse(model);
+                return new CourseViewHolder(view);
             }
 
         };
