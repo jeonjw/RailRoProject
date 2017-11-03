@@ -16,6 +16,7 @@ public class CourseModel {
 
     public CourseModel() {
 
+
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
         Query query = databaseReference
@@ -41,6 +42,7 @@ public class CourseModel {
             }
 
         };
+        adapter.startListening();
 
     }
 

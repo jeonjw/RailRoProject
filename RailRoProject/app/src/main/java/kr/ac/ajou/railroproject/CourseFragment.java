@@ -2,6 +2,7 @@ package kr.ac.ajou.railroproject;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +22,17 @@ public class CourseFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         courseRecyclerView.setLayoutManager(layoutManager);
         courseRecyclerView.setAdapter(courseModel.getAdapter());
+
+        FloatingActionButton courseAddButton = view.findViewById(R.id.course_add_button);
+
+        courseAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.main_container,new CourseAddFragment())
+                        .addToBackStack(null).commit();
+            }
+        });
+
 
         return view;
     }
