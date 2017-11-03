@@ -18,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DBTestModel s = new DBTestModel();
+        s.pushData();
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         TextView toolbarTextView = toolbar.findViewById(R.id.toolbar_title_text_view);
 
@@ -27,9 +30,6 @@ public class MainActivity extends AppCompatActivity {
         final FragmentManager fm = getSupportFragmentManager();
         final Fragment courseFragment = new CourseFragment();
         fm.beginTransaction().add(R.id.main_container, courseFragment).commit();
-
-
-
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.main_bottom_navigation);
         BottomNavigationViewHelper.removeShiftMode(bottomNavigationView);
