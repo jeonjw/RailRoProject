@@ -16,7 +16,6 @@ public class CourseModel {
 
     public CourseModel() {
 
-
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
         Query query = databaseReference

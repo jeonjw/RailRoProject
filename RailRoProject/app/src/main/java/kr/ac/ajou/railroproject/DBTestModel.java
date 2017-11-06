@@ -17,47 +17,28 @@ import java.util.List;
 import static android.content.ContentValues.TAG;
 
 public class DBTestModel {
-    private FirebaseFirestore db;
-    private String stationKey;
+    private DatabaseReference databaseReference;
 
     public DBTestModel() {
-        db = FirebaseFirestore.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
     }
 
     public void pushData() {
-        List<Station> stationList = new ArrayList<>();
 
-        Station station1 = new Station("수원역");
-        Place place1 = new Place("역전시장", "오늘은 역전시장에서 도너츠를 사먹었어요 ㅎㅎ", "1919-03-01");
-        Place place2 = new Place("아주대", "아대짱", "1919-03-01");
+        Course course = new Course("여행가자",123,23,"전진우UID");
+        Station station1 = new Station("수원역", "2017-09-11");
+        Place place1 = new Place("역전시장", "도너츠 사먹음 ㅎ");
+        Place place2 = new Place("아주대", "아주대 짱");
+        Station station2 = new Station("속초역", "2017-09-12");
+        Place place3 = new Place("속초횟집", "회 사먹음 ㅎ");
         station1.addPlace(place1);
         station1.addPlace(place2);
-        stationList.add(station1);
-
-        Station station2 = new Station("속초역");
-        Place place3 = new Place("속초시장", "오늘은 속초시장에서 회를 사먹었어요 ㅎㅎ", "1919-03-02");
         station2.addPlace(place3);
-        stationList.add(station2);
-
-        db.collection("StationList").add(stationList).
-                addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        stationKey = documentReference.getId();
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                }).
-                addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });
-        ;
-
-        Course course = new Course("여행가자", 123, 123, "전진우", stationKey);
+        course.addStation(station1);
+        course.addStation(station2);
 
 
-        db.collection("Course").add(course);
+        databaseReference.child("Course").push().setValue(course);
+
     }
 }

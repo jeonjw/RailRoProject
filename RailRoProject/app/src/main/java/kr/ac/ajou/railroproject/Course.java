@@ -9,7 +9,6 @@ public class Course {
     private int commentCount;
     private int likeCount;
     private String UID;
-    private String stationKey;
     private List<Station> stationList = new ArrayList<Station>();
 
     public List<Station> getStationList() {
@@ -35,15 +34,18 @@ public class Course {
         return likeCount;
     }
 
-    public String getStationKey(){
-        return stationKey;
+    public void addStation(Station station){
+        stationList.add(station);
     }
 
-    public Course(String title, int commentCount, int likeCount, String UID,String stationKey) {
+    public void removeStation(Station station){
+        stationList.remove(station);
+    }
+
+    public Course(String title, int commentCount, int likeCount, String UID) {
         this.title = title;
         this.commentCount = commentCount;
         this.likeCount = likeCount;
         this.UID = UID;
-        this.stationKey = stationKey;
     }
 }

@@ -11,15 +11,13 @@ public class Place {
 
     private String placeName;
     private String courseContent;
-    private String date;
     private List<String> imageUrlList = new ArrayList<String>();
 
     public Place(){}
 
-    public Place(String placeName, String courseContent, String date){
+    public Place(String placeName, String courseContent){
         this.placeName = placeName;
         this.courseContent = courseContent;
-        this.date = date;
     }
 
     public String getPlaceName() {
@@ -28,10 +26,6 @@ public class Place {
 
     public String getCourseContent() {
         return courseContent;
-    }
-
-    public String getDate() {
-        return date;
     }
 
     public List<String> getImageUrlList() {

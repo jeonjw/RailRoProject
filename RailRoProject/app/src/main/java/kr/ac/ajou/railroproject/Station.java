@@ -9,21 +9,19 @@ import java.util.List;
 
 class Station {
     private String stationName;
+    private String date;
     private List<Place> placeList = new ArrayList<Place>();
 
     public Station() {
     }
 
-    public Station(String stationName) {
+    public Station(String stationName, String date) {
         this.stationName = stationName;
+        this.date = date;
     }
 
     public String getStationName() {
         return stationName;
-    }
-
-    public void setStationName(String stationName){
-        this.stationName = stationName;
     }
 
     public List getPlaceList(){
@@ -34,6 +32,10 @@ class Station {
         this.placeList = placeList;
     }
 
+    public String getDate(){
+        return date;
+    }
+
     public void addPlace(Place place){
         placeList.add(place);
     }
@@ -41,6 +43,5 @@ class Station {
     public void remove(Place place){
         placeList.remove(place);
     }
-
 
 }
