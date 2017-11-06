@@ -37,6 +37,8 @@ dependencies {
     compile 'com.firebaseui:firebase-ui-firestore:3.1.0'
     compile 'com.firebaseui:firebase-ui-database:3.1.0'
 
+    compile 'me.iwf.photopicker:PhotoPicker:0.9.10@aar'
+
 
     testCompile 'junit:junit:4.12'
 }
