@@ -1,8 +1,10 @@
 package kr.ac.ajou.railroproject;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -16,6 +18,13 @@ public abstract class TabFragment extends Fragment {
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
+    protected FloatingActionButton writeButton;
+
+    public static int getCurrentTab() {
+        return currentTab;
+    }
+
+    private static int currentTab = 0;
 
     @Nullable
     @Override
@@ -39,6 +48,7 @@ public abstract class TabFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+                currentTab = tab.getPosition();
             }
 
             @Override
@@ -51,6 +61,9 @@ public abstract class TabFragment extends Fragment {
 
             }
         });
+
+        writeButton = view.findViewById(R.id.board_write_floating_button);
+        writeButton.setVisibility(View.INVISIBLE);
         return view;
     }
 

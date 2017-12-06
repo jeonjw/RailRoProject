@@ -10,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import kr.ac.ajou.railroproject.Board.BoardTabFragment;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new TravelInfoTabFragment();
                         break;
                     case R.id.nav_community:
-                        fragment = new CommunityTabFragment();
+                        fragment = new BoardTabFragment();
                         break;
                     case R.id.nav_my_info:
                         fragment = new MyInfoFragment();

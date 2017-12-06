@@ -7,7 +7,7 @@ import java.util.List;
 
 public class TravelInfoTabFragment extends TabFragment {
     @Override
-    void setTabText() {
+    public void setTabText() {
         getTabLayout().addTab(getTabLayout().newTab().setText("관광지"));
         getTabLayout().addTab(getTabLayout().newTab().setText("행사/이벤트"));
         getTabLayout().addTab(getTabLayout().newTab().setText("맛집"));
@@ -15,7 +15,7 @@ public class TravelInfoTabFragment extends TabFragment {
     }
 
     @Override
-    List<Fragment> setFragmentList() {
+    public List<Fragment> setFragmentList() {
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(new TourlistSpotFragment());
         fragmentList.add(new FestivalFragment());

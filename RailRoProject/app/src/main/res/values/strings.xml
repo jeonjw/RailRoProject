@@ -3,4 +3,10 @@
     <string name="course">코스</string>
     <string name="information">정보</string>
     <string name="community">커뮤니티</string>
+
+    <string-array name="board_spinner">
+        <item>팁</item>
+        <item>동행</item>
+        <item>추천</item>
+    </string-array>
 </resources>
