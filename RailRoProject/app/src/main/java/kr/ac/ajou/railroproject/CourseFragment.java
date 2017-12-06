@@ -23,7 +23,7 @@ public class CourseFragment extends Fragment {
         courseRecyclerView.setLayoutManager(layoutManager);
         courseRecyclerView.setAdapter(courseModel.getAdapter());
 
-        FloatingActionButton courseAddButton = view.findViewById(R.id.course_add_button);
+        FloatingActionButton courseAddButton = view.findViewById(R.id.place_add_button);
 
         courseAddButton.setOnClickListener(new View.OnClickListener() {
             @Override

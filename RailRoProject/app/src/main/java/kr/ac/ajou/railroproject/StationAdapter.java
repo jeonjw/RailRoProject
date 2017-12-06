@@ -8,16 +8,11 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-/**
- * Created by admin on 2017-10-16.
- */
-
 public class StationAdapter extends RecyclerView.Adapter<StationViewHolder>{
 
     private List<Station> stationList;
 
     public StationAdapter(List<Station> stationList) {
-        Log.e("eee", String.valueOf(stationList.size()));
         this.stationList = stationList;
     }
 

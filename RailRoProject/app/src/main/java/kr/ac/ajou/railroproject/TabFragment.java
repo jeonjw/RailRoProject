@@ -54,8 +54,9 @@ public abstract class TabFragment extends Fragment {
         return view;
     }
 
-    abstract void setTabText();
-    abstract List<Fragment> setFragmentList();
+    abstract public void setTabText();
+
+    abstract public List<Fragment> setFragmentList();
 
     public TabLayout getTabLayout() {
         return tabLayout;

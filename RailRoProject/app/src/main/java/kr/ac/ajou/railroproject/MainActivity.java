@@ -1,6 +1,5 @@
 package kr.ac.ajou.railroproject;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -17,9 +16,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        DBTestModel s = new DBTestModel();
-        s.pushData();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         TextView toolbarTextView = toolbar.findViewById(R.id.toolbar_title_text_view);
@@ -46,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new TravelInfoTabFragment();
                         break;
                     case R.id.nav_community:
-                        fragment = new CommunityFragment();
+                        fragment = new CommunityTabFragment();
                         break;
                     case R.id.nav_my_info:
                         fragment = new MyInfoFragment();

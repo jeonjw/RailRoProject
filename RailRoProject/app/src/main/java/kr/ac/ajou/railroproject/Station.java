@@ -3,9 +3,6 @@ package kr.ac.ajou.railroproject;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by jinwoo on 2017. 10. 16..
- */
 
 class Station {
     private String stationName;
