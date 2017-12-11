@@ -3,17 +3,27 @@ package kr.ac.ajou.railroproject.Retrofit;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.Query;
 
 public class TourRepo {
 
     @SerializedName("header")
-    Header result;
+    Header header;
     @SerializedName("body")
     Body body;
+
+    public Header getHeader() {
+        return header;
+    }
+
+    public Body getBody() {
+        return body;
+    }
 
     public static class Header {
         @SerializedName("resultCode")
@@ -31,19 +41,52 @@ public class TourRepo {
     }
 
     public static class Body {
-        @SerializedName("items")
-        String items;
 
-        public String getItems() {
+        @SerializedName("items")
+        Items items;
+
+        public Items getItems() {
             return items;
         }
+
+        public static class Items{
+
+            @SerializedName("item")
+            public List<Item> itemList = new ArrayList<>();
+            public List<Item> getItemList() {return itemList;}
+
+
+            public static class Item {
+                @SerializedName("code")
+                int code;
+
+                @SerializedName("name")
+                String name;
+
+                @SerializedName("rnum")
+                int rnum;
+
+                public int getCode() {
+                    return code;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public int getRnum() {
+                    return rnum;
+                }
+            }
+
+        }
+
 
     }
 
 
     public interface TourApiInterface {
-//        _type
-        @GET("areaCode")
+        @GET("rest/KorService/areaCode")
         Call<TourRepo> getTourRetrofit(@Query("ServiceKey") String ServiceKey,
                                        @Query("MobileOS") String MobileOS,
                                        @Query("MobileApp") String MobileApp,

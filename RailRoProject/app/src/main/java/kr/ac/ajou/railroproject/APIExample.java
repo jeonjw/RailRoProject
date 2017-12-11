@@ -28,8 +28,8 @@ public class APIExample extends AsyncTask<String, Void, Void> {
     @Override
     protected Void doInBackground(String... strings) {
         try {
-//            String apiURL = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode?ServiceKey="+key+"&MobileOS=ETC&MobileApp="+appName+"&_type=json";
-            apiURL = "http://api.visitkorea.or.kr/openapi/service/rest/KorService";
+            String apiURL = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode?ServiceKey="+key+"&MobileOS=ETC&MobileApp="+appName+"&_type=json";
+//            apiURL = "http://api.visitkorea.or.kr/openapi/service/rest/KorService";
             String URL = apiURL + "/areaCode?" + URLInfo + "&areaCode=4";
             URL url = new URL(URL);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();

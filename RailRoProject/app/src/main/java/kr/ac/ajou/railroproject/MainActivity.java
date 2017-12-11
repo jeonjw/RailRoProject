@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        new APIExample().execute();
         new TourApiReader().start();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
