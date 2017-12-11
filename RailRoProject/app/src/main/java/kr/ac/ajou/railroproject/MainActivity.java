@@ -1,5 +1,6 @@
 package kr.ac.ajou.railroproject;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -10,7 +11,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.io.IOException;
+
 import kr.ac.ajou.railroproject.Board.BoardTabFragment;
+import kr.ac.ajou.railroproject.Retrofit.TourApiReader;
+import kr.ac.ajou.railroproject.Retrofit.TourRepo;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        new TourApiReader().start();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         TextView toolbarTextView = toolbar.findViewById(R.id.toolbar_title_text_view);

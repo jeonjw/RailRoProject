@@ -20,16 +20,18 @@ import android.widget.Spinner;
 import android.widget.ToggleButton;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.ac.ajou.railroproject.OnUploadImageListener;
+import kr.ac.ajou.railroproject.PhotoAdapter;
 import kr.ac.ajou.railroproject.R;
 import me.iwf.photopicker.PhotoPicker;
 import me.iwf.photopicker.PhotoPreview;
-
 
 
 public class BoardWriteActivity extends AppCompatActivity {
@@ -43,6 +45,7 @@ public class BoardWriteActivity extends AppCompatActivity {
     private ToggleButton anonymousToggleButton;
     private List<String> selectedPhotos;
     private List<String> deletePhotos;
+    private PhotoAdapter photoAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,29 +67,29 @@ public class BoardWriteActivity extends AppCompatActivity {
 
         if (getIntent() != null) {
             deletePhotos = new ArrayList<>();
-//            selectedPhotos = getIntent().getExtras().getStringArrayList("PHOTO_URL_LIST");
+            selectedPhotos = getIntent().getExtras().getStringArrayList("PHOTO_URL_LIST");
 
-//            if (selectedPhotos == null)
-//                selectedPhotos = new ArrayList<>();
-//            else
-//                deletePhotos.addAll(selectedPhotos);
+            if (selectedPhotos == null)
+                selectedPhotos = new ArrayList<>();
+            else
+                deletePhotos.addAll(selectedPhotos);
 
             currentPosition = getIntent().getExtras().getInt("CURRENT_BOARD_TAB");
-//            String reWriteTitle = getIntent().getExtras().getString("BOARD_TITLE");
-//            String reWriteContents = getIntent().getExtras().getString("BOARD_CONTENTS");
-//            postKey = getIntent().getExtras().getString("CORRECT_POST_KEY");
-//            commentCount = getIntent().getExtras().getInt("COMMENT_COUNT");
-//
-//            if (reWriteTitle != null && reWriteContents != null) {
-//                titleEditText.setText(reWriteTitle);
-//                contentsEditText.setText(reWriteContents);
-//                boardSpinner.setVisibility(View.GONE);
-//                rewrite = true;
-//            }
+            String reWriteTitle = getIntent().getExtras().getString("BOARD_TITLE");
+            String reWriteContents = getIntent().getExtras().getString("BOARD_CONTENTS");
+            postKey = getIntent().getExtras().getString("CORRECT_POST_KEY");
+            commentCount = getIntent().getExtras().getInt("COMMENT_COUNT");
+
+            if (reWriteTitle != null && reWriteContents != null) {
+                titleEditText.setText(reWriteTitle);
+                contentsEditText.setText(reWriteContents);
+                boardSpinner.setVisibility(View.GONE);
+                rewrite = true;
+            }
         }
 
-//        photoAdapter = new PhotoAdapter(selectedPhotos);
-//        recyclerView.setAdapter(photoAdapter);
+        photoAdapter = new PhotoAdapter(selectedPhotos);
+        recyclerView.setAdapter(photoAdapter);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(BoardWriteActivity.this, R.array.board_spinner, R.layout.spinner_post_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -110,12 +113,10 @@ public class BoardWriteActivity extends AppCompatActivity {
                 if (isTextInputError())
                     return;
 
-                writePost();
-
-//                if (!rewrite)
-//                    writePost();
-//                else
-//                    correctPost(finalPostKey, finalCommentCount);
+                if (!rewrite)
+                    writePost();
+                else
+                    correctPost(finalPostKey, finalCommentCount);
             }
         });
 
@@ -161,69 +162,66 @@ public class BoardWriteActivity extends AppCompatActivity {
         final String contents = contentsEditText.getText().toString();
         final String postType = getDatabaseKey(boardSpinner.getSelectedItemPosition());
 
-        boardModel.writeBoard(postType, getPostAuthorName(), title, contents);
-        finish();
 
-//        if (selectedPhotos.size() != 0) {
-//            Snackbar.make(contentsEditText, "이미지 업로드 중 . .", Snackbar.LENGTH_LONG).show();
-//            boardModel.uploadImages(getInputStreamFromUri(selectedPhotos), new OnUploadImageListener() {
-//                @Override
-//                public void onSuccess(List<String> urlList) {
-//                    boardModel.writePostWithImage(postType, getPostAuthorName(), title, contents, urlList);
-//                    finish();
-//                }
-//            });
-//
-//        } else {
-//            boardModel.writePost(postType, getPostAuthorName(), title, contents);
-//            finish();
-//        }
+        if (selectedPhotos.size() != 0) {
+            Snackbar.make(contentsEditText, "이미지 업로드 중 . .", Snackbar.LENGTH_LONG).show();
+            boardModel.uploadImages(getInputStreamFromUri(selectedPhotos), new OnUploadImageListener() {
+                @Override
+                public void onSuccess(List<String> urlList) {
+                    boardModel.writeBoardWithImage(postType, getPostAuthorName(), title, contents, urlList);
+                    finish();
+                }
+            });
+
+        } else {
+            boardModel.writeBoard(postType, getPostAuthorName(), title, contents);
+            finish();
+        }
     }
 
-//    private void correctPost(final String postKey, final int commentCount) {
-//        final String title = titleEditText.getText().toString();
-//        final String contents = contentsEditText.getText().toString();
-//        final String postType = getDatabaseKey(boardSpinner.getSelectedItemPosition());
-//
-//        if (selectedPhotos.size() != 0) {
-//
-//            System.out.println(selectedPhotos);
-//            System.out.println(deletePhotos);
-//            System.out.println(selectedPhotos.equals(deletePhotos));
-//
-//            if (!selectedPhotos.equals(deletePhotos)) {
-//
-//                boardModel.removePhotoFromStorage(deletePhotos);
-//
-//                Snackbar.make(contentsEditText, "이미지 업로드 중 . .", Snackbar.LENGTH_LONG).show();
-//                boardModel.uploadImages(getInputStreamFromUri(selectedPhotos), new OnUploadImageListener() {
-//
-//                    @Override
-//                    public void onSuccess(List<String> urlList) {
-//                        boardModel.correctPostWithImages(postType, getPostAuthorName(), title, contents, postKey, commentCount, urlList);
-//                        finish();
-//                    }
-//                });
-//            } else {
-//                boardModel.correctPostWithImages(postType, getPostAuthorName(), title, contents, postKey, commentCount, selectedPhotos);
-//                finish();
-//            }
-//
-//
-//        } else {
-//
-//            if (deletePhotos.size() != 0)
-//                boardModel.removePhotoFromStorage(deletePhotos);
-//
-//            boardModel.correctPost(postType, getPostAuthorName(), title, contents, postKey, commentCount);
-//            finish();
-//        }
-//
-//    }
+    private void correctPost(final String postKey, final int commentCount) {
+        final String title = titleEditText.getText().toString();
+        final String contents = contentsEditText.getText().toString();
+        final String postType = getDatabaseKey(boardSpinner.getSelectedItemPosition());
+
+        if (selectedPhotos.size() != 0) {
+
+            System.out.println(selectedPhotos);
+            System.out.println(deletePhotos);
+            System.out.println(selectedPhotos.equals(deletePhotos));
+
+            if (!selectedPhotos.equals(deletePhotos)) {
+
+                boardModel.removePhotoFromStorage(deletePhotos);
+
+                Snackbar.make(contentsEditText, "이미지 업로드 중 . .", Snackbar.LENGTH_LONG).show();
+                boardModel.uploadImages(getInputStreamFromUri(selectedPhotos), new OnUploadImageListener() {
+
+                    @Override
+                    public void onSuccess(List<String> urlList) {
+                        boardModel.correctBoardWithImages(postType, getPostAuthorName(), title, contents, postKey, commentCount, urlList);
+                        finish();
+                    }
+                });
+            } else {
+                boardModel.correctBoardWithImages(postType, getPostAuthorName(), title, contents, postKey, commentCount, selectedPhotos);
+                finish();
+            }
+
+
+        } else {
+
+            if (deletePhotos.size() != 0)
+                boardModel.removePhotoFromStorage(deletePhotos);
+
+            boardModel.correctBoard(postType, getPostAuthorName(), title, contents, postKey, commentCount);
+            finish();
+        }
+
+    }
 
     private String getPostAuthorName() {
-//        return anonymousToggleButton.isChecked() ? "익명" : FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
-        return anonymousToggleButton.isChecked() ? "익명" : "전진우";
+        return anonymousToggleButton.isChecked() ? "익명" : FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
     }
 
     private String getDatabaseKey(int currentPosition) {
@@ -244,25 +242,25 @@ public class BoardWriteActivity extends AppCompatActivity {
         return databaseKey;
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (resultCode == RESULT_OK &&
-//                (requestCode == PhotoPicker.REQUEST_CODE || requestCode == PhotoPreview.REQUEST_CODE)) {
-//
-//            List<String> photos = null;
-//            if (data != null)
-//                photos = data.getStringArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS);
-//
-//
-//            selectedPhotos.clear();
-//
-//            if (photos != null)
-//                selectedPhotos.addAll(photos);
-//
-//            photoAdapter.notifyDataSetChanged();
-//        }
-//    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK &&
+                (requestCode == PhotoPicker.REQUEST_CODE || requestCode == PhotoPreview.REQUEST_CODE)) {
+
+            List<String> photos = null;
+            if (data != null)
+                photos = data.getStringArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS);
+
+
+            selectedPhotos.clear();
+
+            if (photos != null)
+                selectedPhotos.addAll(photos);
+
+            photoAdapter.notifyDataSetChanged();
+        }
+    }
 
     private ArrayList<InputStream> getInputStreamFromUri(List<String> photoInputStreamList) {
         ArrayList<InputStream> inputStreamList = new ArrayList<>();

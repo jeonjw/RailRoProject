@@ -14,8 +14,6 @@ import kr.ac.ajou.railroproject.TabFragment;
 
 public class BoardTabFragment extends TabFragment {
 
-
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

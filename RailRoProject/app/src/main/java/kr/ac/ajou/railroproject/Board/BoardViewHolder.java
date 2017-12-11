@@ -16,6 +16,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -24,6 +25,8 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.Objects;
 
+import kr.ac.ajou.railroproject.Comment.CommentDialogFragment;
+import kr.ac.ajou.railroproject.PhotoAdapter;
 import kr.ac.ajou.railroproject.R;
 
 public class BoardViewHolder extends RecyclerView.ViewHolder {
@@ -59,39 +62,39 @@ public class BoardViewHolder extends RecyclerView.ViewHolder {
         photoRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4, OrientationHelper.VERTICAL));
 
 
-//        dropdownButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                PopupMenu popup = new PopupMenu(context, dropdownButton);
-//                popup.getMenuInflater()
-//                        .inflate(R.menu.popup_menu, popup.getMenu());
-//
-//                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-//                    public boolean onMenuItemClick(MenuItem item) {
-//                        if (item.getItemId() == R.id.popup_delete) {
-//                            if (Objects.equals(board.getAuthorUid(), User.getInstance().getUid())) {
-//                                mDatabase.child("comments").child(dataRefKey).removeValue();
-//                                mDatabase.child(postType).child(dataRefKey).removeValue();
-//                            } else {
-//                                Snackbar.make(dateTextView, "권한이 없습니다", Snackbar.LENGTH_SHORT).show();
-//                            }
-//                        } else if (item.getItemId() == R.id.popup_rewrite) {
-//                            Intent intent = new Intent(context, BoardWriteActivity.class);
-//                            intent.putExtra("CURRENT_BOARD_TAB", BoardTabFragment.getCurrentTab());
-//                            intent.putExtra("BOARD_TITLE", board.getTitle());
-//                            intent.putExtra("BOARD_CONTENTS", board.getContents());
-//                            intent.putExtra("CORRECT_POST_KEY", dataRefKey);
-//                            intent.putExtra("COMMENT_COUNT", board.getCommentCount());
-//                            intent.putExtra("PHOTO_URL_LIST", (Serializable) board.getUrlList());
-//                            context.startActivity(intent);
-//                        }
-//                        return true;
-//                    }
-//                });
-//
-//                popup.show();
-//            }
-//        });
+        dropdownButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popup = new PopupMenu(context, dropdownButton);
+                popup.getMenuInflater()
+                        .inflate(R.menu.popup_menu, popup.getMenu());
+
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+                        if (item.getItemId() == R.id.popup_delete) {
+                            if (Objects.equals(board.getAuthorUid(), FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                                mDatabase.child("Comments").child(dataRefKey).removeValue();
+                                mDatabase.child(postType).child(dataRefKey).removeValue();
+                            } else {
+                                Snackbar.make(dateTextView, "권한이 없습니다", Snackbar.LENGTH_SHORT).show();
+                            }
+                        } else if (item.getItemId() == R.id.popup_rewrite) {
+                            Intent intent = new Intent(context, BoardWriteActivity.class);
+                            intent.putExtra("CURRENT_BOARD_TAB", BoardTabFragment.getCurrentTab());
+                            intent.putExtra("BOARD_TITLE", board.getTitle());
+                            intent.putExtra("BOARD_CONTENTS", board.getContents());
+                            intent.putExtra("CORRECT_POST_KEY", dataRefKey);
+                            intent.putExtra("COMMENT_COUNT", board.getCommentCount());
+                            intent.putExtra("PHOTO_URL_LIST", (Serializable) board.getUrlList());
+                            context.startActivity(intent);
+                        }
+                        return true;
+                    }
+                });
+
+                popup.show();
+            }
+        });
 
         commentImageLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,8 +102,8 @@ public class BoardViewHolder extends RecyclerView.ViewHolder {
                 FragmentManager fragmentManager =
                         ((AppCompatActivity) itemView.getContext()).getSupportFragmentManager();
 
-//                CommentDialogFragment dialog = CommentDialogFragment.newInstance(dataRefKey, postType, board.getTitle());
-//                dialog.show(fragmentManager, "commentDialog");
+                CommentDialogFragment dialog = CommentDialogFragment.newInstance(dataRefKey, postType, board.getTitle());
+                dialog.show(fragmentManager, "commentDialog");
             }
         });
 
@@ -119,18 +122,18 @@ public class BoardViewHolder extends RecyclerView.ViewHolder {
         this.dataRefKey = postKey;
         this.postType = postType;
 
-//        int visibility = Objects.equals(model.getAuthorUid(), User.getInstance().getUid()) ?
-//                View.VISIBLE : View.GONE;
-//
-//        dropdownButton.setVisibility(visibility);
+        int visibility = Objects.equals(model.getAuthorUid(), FirebaseAuth.getInstance().getCurrentUser().getUid()) ?
+                View.VISIBLE : View.GONE;
 
-//        if (model.getUrlList() == null || model.getUrlList().size() == 0)
-//            photoRecyclerView.setVisibility(View.GONE);
-//        else {
-//            photoRecyclerView.setVisibility(View.VISIBLE);
-//            PhotoAdapter photoAdapter = new PhotoAdapter(model.getUrlList());
-//            photoRecyclerView.setAdapter(photoAdapter);
-//        }
+        dropdownButton.setVisibility(visibility);
+
+        if (model.getUrlList() == null || model.getUrlList().size() == 0)
+            photoRecyclerView.setVisibility(View.GONE);
+        else {
+            photoRecyclerView.setVisibility(View.VISIBLE);
+            PhotoAdapter photoAdapter = new PhotoAdapter(model.getUrlList());
+            photoRecyclerView.setAdapter(photoAdapter);
+        }
 
         titleTextView.requestFocus();
 
