@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-public abstract class TabFragment extends Fragment {
+public abstract class BaseTabFragment extends Fragment {
 
     private ViewPager viewPager;
     private TabLayout tabLayout;

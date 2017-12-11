@@ -1,6 +1,5 @@
 package kr.ac.ajou.railroproject;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -11,11 +10,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import java.io.IOException;
-
 import kr.ac.ajou.railroproject.Board.BoardTabFragment;
 import kr.ac.ajou.railroproject.Retrofit.TourApiReader;
-import kr.ac.ajou.railroproject.Retrofit.TourRepo;
+import kr.ac.ajou.railroproject.TourInfo.TravelInfoTabFragment;
 
 public class MainActivity extends AppCompatActivity {
 

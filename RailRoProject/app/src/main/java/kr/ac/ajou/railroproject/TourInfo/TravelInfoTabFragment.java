@@ -1,11 +1,13 @@
-package kr.ac.ajou.railroproject;
+package kr.ac.ajou.railroproject.TourInfo;
 
 import android.support.v4.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TravelInfoTabFragment extends TabFragment {
+import kr.ac.ajou.railroproject.BaseTabFragment;
+
+public class TravelInfoTabFragment extends BaseTabFragment {
     @Override
     public void setTabText() {
         getTabLayout().addTab(getTabLayout().newTab().setText("관광지"));

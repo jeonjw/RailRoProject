@@ -12,87 +12,100 @@ import retrofit2.http.Query;
 
 public class TourRepo {
 
-    @SerializedName("header")
-    Header header;
-    @SerializedName("body")
-    Body body;
+    @SerializedName("response")
+    Response response;
 
-    public Header getHeader() {
-        return header;
+    public Response getResponse() {
+        return response;
     }
 
-    public Body getBody() {
-        return body;
-    }
+    public static class Response {
 
-    public static class Header {
-        @SerializedName("resultCode")
-        String resultCode;
-        @SerializedName("resultMsg")
-        String resultMsg;
+        @SerializedName("header")
+        Header header;
+        @SerializedName("body")
+        Body body;
 
-        public String getResultCode() {
-            return resultCode;
+        public Header getHeader() {
+            return header;
         }
 
-        public String getResultMsg() {
-            return resultMsg;
-        }
-    }
-
-    public static class Body {
-
-        @SerializedName("items")
-        Items items;
-
-        public Items getItems() {
-            return items;
+        public Body getBody() {
+            return body;
         }
 
-        public static class Items{
+        public static class Header {
+            @SerializedName("resultCode")
+            String resultCode;
+            @SerializedName("resultMsg")
+            String resultMsg;
 
-            @SerializedName("item")
-            public List<Item> itemList = new ArrayList<>();
-            public List<Item> getItemList() {return itemList;}
-
-
-            public static class Item {
-                @SerializedName("code")
-                int code;
-
-                @SerializedName("name")
-                String name;
-
-                @SerializedName("rnum")
-                int rnum;
-
-                public int getCode() {
-                    return code;
-                }
-
-                public String getName() {
-                    return name;
-                }
-
-                public int getRnum() {
-                    return rnum;
-                }
+            public String getResultCode() {
+                return resultCode;
             }
 
+            public String getResultMsg() {
+                return resultMsg;
+            }
         }
 
+        public static class Body {
+
+            @SerializedName("items")
+            Items items;
+
+            public Items getItems() {
+                return items;
+            }
+
+            public static class Items {
+
+                @SerializedName("item")
+                public List<Item> itemList = new ArrayList<>();
+
+                public List<Item> getItemList() {
+                    return itemList;
+                }
+
+
+                public static class Item {
+                    @SerializedName("code")
+                    int code;
+
+                    @SerializedName("name")
+                    String name;
+
+                    @SerializedName("rnum")
+                    int rnum;
+
+                    public int getCode() {
+                        return code;
+                    }
+
+                    public String getName() {
+                        return name;
+                    }
+
+                    public int getRnum() {
+                        return rnum;
+                    }
+                }
+
+            }
+
+
+        }
 
     }
 
 
     public interface TourApiInterface {
         @GET("rest/KorService/areaCode")
-        Call<TourRepo> getTourRetrofit(@Query("ServiceKey") String ServiceKey,
+        Call<TourRepo> getTourRetrofit(@Query(value = "ServiceKey", encoded = true) String ServiceKey,
                                        @Query("MobileOS") String MobileOS,
                                        @Query("MobileApp") String MobileApp,
                                        @Query("_type") String _type);
     }
-
 
 
 }

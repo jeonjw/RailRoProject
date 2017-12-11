@@ -9,10 +9,10 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-import kr.ac.ajou.railroproject.TabFragment;
+import kr.ac.ajou.railroproject.BaseTabFragment;
 
 
-public class BoardTabFragment extends TabFragment {
+public class BoardTabFragment extends BaseTabFragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class BoardTabFragment extends TabFragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), BoardWriteActivity.class);
-                intent.putExtra("CURRENT_BOARD_TAB", TabFragment.getCurrentTab());
+                intent.putExtra("CURRENT_BOARD_TAB", BaseTabFragment.getCurrentTab());
                 startActivity(intent);
             }
         });
