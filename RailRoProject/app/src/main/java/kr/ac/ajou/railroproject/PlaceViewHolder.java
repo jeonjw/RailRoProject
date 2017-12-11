@@ -17,7 +17,7 @@ public class PlaceViewHolder extends RecyclerView.ViewHolder {
 
     public void bindData(Place place){
         placeNameTextView.setText(place.getPlaceName());
-        placeDetailTextView.setText(place.getCourseContent());
+        placeDetailTextView.setText(place.getPlaceContent());
     }
 
 

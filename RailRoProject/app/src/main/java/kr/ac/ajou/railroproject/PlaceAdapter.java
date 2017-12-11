@@ -13,6 +13,13 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceViewHolder> {
 
     private List<Place> placeList = new ArrayList<>();
 
+    public PlaceAdapter(){
+    }
+
+    public PlaceAdapter(List<Place> list){
+        this.placeList = list;
+    }
+
     @Override
     public PlaceViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_place, parent, false);

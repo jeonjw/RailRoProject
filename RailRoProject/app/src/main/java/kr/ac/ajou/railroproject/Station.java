@@ -1,10 +1,11 @@
 package kr.ac.ajou.railroproject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
-class Station {
+class Station implements Serializable{
     private String stationName;
     private String date;
     private List<Place> placeList = new ArrayList<Place>();
