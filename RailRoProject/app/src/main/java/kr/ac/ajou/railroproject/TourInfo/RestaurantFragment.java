@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import kr.ac.ajou.railroproject.R;
+
 
 public class RestaurantFragment extends android.support.v4.app.Fragment {
     @Nullable

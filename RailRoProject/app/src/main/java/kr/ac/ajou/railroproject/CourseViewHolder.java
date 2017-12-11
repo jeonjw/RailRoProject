@@ -1,6 +1,9 @@
 package kr.ac.ajou.railroproject;
 
+import android.content.Context;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -20,9 +23,14 @@ public class CourseViewHolder extends RecyclerView.ViewHolder {
     private ImageView ivComment;
     private TextView tvLikeCount;
     private TextView tvCommentCount;
+    private Course course;
+
+    private Context context;
 
     CourseViewHolder(View itemView) {
         super(itemView);
+
+        context = itemView.getContext();
 
         tvTitle = itemView.findViewById(R.id.tv_course_item_title);
         ivProfile = itemView.findViewById(R.id.iv_course_item_profile);
@@ -39,10 +47,21 @@ public class CourseViewHolder extends RecyclerView.ViewHolder {
         LinearLayoutManager layoutManager = new LinearLayoutManager(itemView.getContext());
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         stationRecyclerView.setLayoutManager(layoutManager);
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
+                CourseDetailFragment courseDetailFragment =  CourseDetailFragment.newInstance(course);
+                fragmentManager.beginTransaction().replace(R.id.main_container,courseDetailFragment).addToBackStack(null).commit();
+            }
+        });
     }
 
     public void bindCourse(Course course){
         //TO DO: ivProfile이미지갖다붙이기
+
+        this.course = course;
 
         stationRecyclerView.setAdapter(new StationAdapter(course.getStationList()));
         tvTitle.setText(course.getTitle());

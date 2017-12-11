@@ -1,5 +1,7 @@
 package kr.ac.ajou.railroproject;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,22 +12,22 @@ import java.util.List;
 public class Place {
 
     private String placeName;
-    private String courseContent;
+    private String placeContent;
     private List<String> imageUrlList = new ArrayList<String>();
 
     public Place(){}
 
     public Place(String placeName, String courseContent){
         this.placeName = placeName;
-        this.courseContent = courseContent;
+        this.placeContent = courseContent;
     }
 
     public String getPlaceName() {
         return placeName;
     }
 
-    public String getCourseContent() {
-        return courseContent;
+    public String getPlaceContent() {
+        return placeContent;
     }
 
     public List<String> getImageUrlList() {

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_course_detail_title"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_course_detail_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/iv_course_detail_profile"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/like"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7473958" />
+
+    <TextView
+        android:id="@+id/tv_course_detail_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/iv_course_detail_like_count"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_course_detail_profile" />
+
+    <TextView
+        android:id="@+id/tv_course_detail_like_count"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_course_detail_like_count"
+        app:layout_constraintEnd_toStartOf="@+id/iv_course_detail_comment_count"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/iv_course_detail_like_count"
+        app:layout_constraintTop_toTopOf="@+id/iv_course_detail_like_count" />
+
+    <TextView
+        android:id="@+id/tv_course_detail_comment_count"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_course_detail_comment_count"
+        app:layout_constraintEnd_toStartOf="@+id/textView10"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/iv_course_detail_comment_count"
+        app:layout_constraintTop_toTopOf="@+id/iv_course_detail_comment_count" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="조회수 :"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_course_detail_comment_count"
+        app:layout_constraintEnd_toStartOf="@+id/tv_course_detail_hit_count"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/tv_course_detail_comment_count"
+        app:layout_constraintTop_toTopOf="@+id/tv_course_detail_comment_count" />
+
+    <TextView
+        android:id="@+id/tv_course_detail_hit_count"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toTopOf="@+id/textView10" />
+
+    <ImageView
+        android:id="@+id/iv_course_detail_like_count"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_course_detail_date"
+        app:layout_constraintEnd_toStartOf="@+id/tv_course_detail_like_count"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/tv_course_detail_date"
+        app:layout_constraintTop_toTopOf="@+id/tv_course_detail_date"
+        app:srcCompat="@drawable/__picker_ic_broken_image_black_48dp" />
+
+    <ImageView
+        android:id="@+id/iv_course_detail_comment_count"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_course_detail_like_count"
+        app:layout_constraintEnd_toStartOf="@+id/tv_course_detail_comment_count"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/tv_course_detail_like_count"
+        app:layout_constraintTop_toTopOf="@+id/tv_course_detail_like_count"
+        app:srcCompat="@drawable/__picker_checkbox_marked" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/course_detail_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_course_detail_like_count" />
+
+</android.support.constraint.ConstraintLayout>
