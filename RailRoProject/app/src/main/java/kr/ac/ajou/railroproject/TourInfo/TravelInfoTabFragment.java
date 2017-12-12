@@ -19,7 +19,7 @@ public class TravelInfoTabFragment extends BaseTabFragment {
     @Override
     public List<Fragment> setFragmentList() {
         List<Fragment> fragmentList = new ArrayList<>();
-        fragmentList.add(new TourlistSpotFragment());
+        fragmentList.add(new TourListSpotFragment());
         fragmentList.add(new FestivalFragment());
         fragmentList.add(new RestaurantFragment());
         fragmentList.add(new AccommodationFragment());
