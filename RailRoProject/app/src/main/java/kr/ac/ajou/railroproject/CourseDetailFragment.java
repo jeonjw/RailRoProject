@@ -39,7 +39,7 @@ public class CourseDetailFragment extends Fragment {
         tvCourseDetailTitle.setText(""+curCourse.getTitle());
         tvCourseDetailLikeCount.setText(""+curCourse.getLikeCount());
         tvCourseDetailCommentCount.setText(""+curCourse.getCommentCount());
-        tvCourseDetailHitCount.setText(""+curCourse.getHitCount());
+        tvCourseDetailHitCount.setText(""+(curCourse.getHitCount()+1));
         courseRecyclerView = view.findViewById(R.id.course_detail_recycler_view);
 
         CourseDetailAdapter courseDetailAdapter = new CourseDetailAdapter(curCourse.getStationList(), curCourse);
