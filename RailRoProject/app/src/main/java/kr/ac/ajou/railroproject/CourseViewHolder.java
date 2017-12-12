@@ -59,7 +59,7 @@ public class CourseViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bindCourse(Course course){
-        //TO DO: ivProfile이미지갖다붙이기
+        //TODO: ivProfile이미지갖다붙이기
 
         this.course = course;
 

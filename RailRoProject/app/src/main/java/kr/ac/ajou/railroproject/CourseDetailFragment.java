@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +42,7 @@ public class CourseDetailFragment extends Fragment {
         tvCourseDetailHitCount.setText(""+curCourse.getHitCount());
         courseRecyclerView = view.findViewById(R.id.course_detail_recycler_view);
 
-        CourseDetailAdapter courseDetailAdapter = new CourseDetailAdapter(curCourse.getStationList(), curCourse.getCourseKey());
+        CourseDetailAdapter courseDetailAdapter = new CourseDetailAdapter(curCourse.getStationList(), curCourse);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         courseRecyclerView.setLayoutManager(layoutManager);
         courseRecyclerView.setAdapter(courseDetailAdapter);
@@ -52,7 +53,6 @@ public class CourseDetailFragment extends Fragment {
 
     public static CourseDetailFragment newInstance(Course course) {
         CourseDetailFragment courseDetailFragment = new CourseDetailFragment();
-
         Bundle args = new Bundle();
         args.putParcelable("COURSE",course);
 
