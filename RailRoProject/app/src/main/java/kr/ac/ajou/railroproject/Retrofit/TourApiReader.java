@@ -16,16 +16,18 @@ public class TourApiReader {
     private TourRepo.TourSpotRepo tourSpotRepo;
     private List<TourRepo.Response.Body.Items.Item> mainAreaList;
     private List<TourRepo.Response.Body.Items.Item> detailAreaList;
+    private List<TourRepo.TourSpotRepo.Response.Body.Items.Item> tourSpotList;
     private String apiURL = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/";
     private String key = "l8FhPRcAWi8IadpttfL%2FHoQKxjdIzPQ1NImTqOQZnxBgE%2BtGwOPyX2%2FGKyoTVZc6ecH631rDmLJQO1xLAEbKcg%3D%3D";
-    private OnApiReadListener onDataChangedListener;
+    private OnApiReadListener onApiReadListener;
     private TourRepo.TourApiInterface service;
 
     private static final int MAIN_AREA_CODE = 0;
     private static final int DETAIL_AREA_CODE = 1;
+    private static final int AREA_BASED_SPOT_CODE = 2;
 
-    public TourApiReader(OnApiReadListener onDataChangedListener) {
-        this.onDataChangedListener = onDataChangedListener;
+    public TourApiReader(OnApiReadListener onApiReadListener) {
+        this.onApiReadListener = onApiReadListener;
         client = new Retrofit.Builder().baseUrl("http://api.visitkorea.or.kr/openapi/service/rest/KorService/").addConverterFactory(GsonConverterFactory.create()).build();
         service = client.create(TourRepo.TourApiInterface.class);
     }
@@ -41,7 +43,7 @@ public class TourApiReader {
                     tourRepo = response.body();
 
                     mainAreaList = tourRepo.getResponse().getBody().getItems().getItemList();
-                    onDataChangedListener.onRead(MAIN_AREA_CODE);
+                    onApiReadListener.onRead(MAIN_AREA_CODE);
                 }
             }
 
@@ -62,7 +64,7 @@ public class TourApiReader {
                     tourRepo = response.body();
 
                     detailAreaList = tourRepo.getResponse().getBody().getItems().getItemList();
-                    onDataChangedListener.onRead(DETAIL_AREA_CODE);
+                    onApiReadListener.onRead(DETAIL_AREA_CODE);
                 }
             }
 
@@ -82,10 +84,8 @@ public class TourApiReader {
                 if (response.isSuccessful()) {
                     tourSpotRepo = response.body();
 
-                    System.out.println("TEST Spot" +response.raw());
-
-//                    mainAreaList = tourRepo.getResponse().getBody().getItems().getItemList();
-//                    onDataChangedListener.onDataChanged();
+                    tourSpotList = tourSpotRepo.getResponse().getBody().getItems().getItemList();
+                    onApiReadListener.onRead(AREA_BASED_SPOT_CODE);
                 }
             }
 
@@ -105,5 +105,9 @@ public class TourApiReader {
 
     public List<TourRepo.Response.Body.Items.Item> getDetailAreaList() {
         return detailAreaList;
+    }
+
+    public List<TourRepo.TourSpotRepo.Response.Body.Items.Item> getTourSpotList() {
+        return tourSpotList;
     }
 }

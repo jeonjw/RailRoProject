@@ -3,6 +3,8 @@ package kr.ac.ajou.railroproject.TourInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,9 +24,11 @@ import kr.ac.ajou.railroproject.Retrofit.TourRepo;
 public class BaseTourFragment extends Fragment {
     private List<TourRepo.Response.Body.Items.Item> mainAreaList;
     private List<TourRepo.Response.Body.Items.Item> detailAreaList;
+    private List<TourRepo.TourSpotRepo.Response.Body.Items.Item> tourSpotList;
     private TourApiReader apiReader;
     private ArrayAdapter<String> mainAreaAdapter;
     private ArrayAdapter<String> detailAreaAdapter;
+    private TourInfoAdapter tourInfoAdapter;
     private ArrayList<String> mainAreaNameList;
     private ArrayList<String> detailAreaNameList;
 
@@ -33,6 +37,7 @@ public class BaseTourFragment extends Fragment {
 
     private static final int MAIN_AREA_CODE = 0;
     private static final int DETAIL_AREA_CODE = 1;
+    private static final int AREA_BASED_SPOT_CODE = 2;
 
     @Nullable
     @Override
@@ -41,6 +46,10 @@ public class BaseTourFragment extends Fragment {
 
         Spinner mainAreaSpinner = view.findViewById(R.id.tour_main_area_spinner);
         Spinner detailAreaSpinner = view.findViewById(R.id.tour_detail_area_spinner);
+        RecyclerView recyclerView = view.findViewById(R.id.info_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        tourInfoAdapter = new TourInfoAdapter();
+        recyclerView.setAdapter(tourInfoAdapter);
 
         mainAreaNameList = new ArrayList<>();
         detailAreaNameList = new ArrayList<>();
@@ -63,6 +72,9 @@ public class BaseTourFragment extends Fragment {
                         detailAreaNameList.add(detailAreaList.get(i).getName());
                     }
                     detailAreaAdapter.notifyDataSetChanged();
+                } else if (requestType == AREA_BASED_SPOT_CODE) {
+                    tourSpotList = apiReader.getTourSpotList();
+                    tourInfoAdapter.setSpotList(tourSpotList);
                 }
             }
         });

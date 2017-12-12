@@ -198,6 +198,85 @@ public class TourRepo {
 
                         @SerializedName("zipcode") String zipcode;
 
+                        public String getAddr1() {
+                            return addr1;
+                        }
+
+                        public String getAddr2() {
+                            return addr2;
+                        }
+
+                        public int getAreacode() {
+                            return areacode;
+                        }
+
+                        public String getCat1() {
+                            return cat1;
+                        }
+
+                        public String getCat2() {
+                            return cat2;
+                        }
+
+                        public String getCat3() {
+                            return cat3;
+                        }
+
+                        public int getContentid() {
+                            return contentid;
+                        }
+
+                        public int getContenttypeid() {
+                            return contenttypeid;
+                        }
+
+                        public long getCreatedtime() {
+                            return createdtime;
+                        }
+
+                        public String getFirstimage() {
+                            return firstimage;
+                        }
+
+                        public String getFirstimage2() {
+                            return firstimage2;
+                        }
+
+                        public double getMapx() {
+                            return mapx;
+                        }
+
+                        public double getMapy() {
+                            return mapy;
+                        }
+
+                        public int getMlevel() {
+                            return mlevel;
+                        }
+
+                        public long getModifiedtime() {
+                            return modifiedtime;
+                        }
+
+                        public int getReadcount() {
+                            return readcount;
+                        }
+
+                        public int getSigungucode() {
+                            return sigungucode;
+                        }
+
+                        public String getTel() {
+                            return tel;
+                        }
+
+                        public String getTitle() {
+                            return title;
+                        }
+
+                        public String getZipcode() {
+                            return zipcode;
+                        }
                     }
 
                 }
