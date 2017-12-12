@@ -5,11 +5,12 @@ import android.os.Parcelable;
 
 import com.google.firebase.database.Exclude;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Course implements Parcelable {
+public class Course implements Parcelable{
     private String title;
     private int commentCount;
     private int likeCount;
@@ -49,6 +50,10 @@ public class Course implements Parcelable {
     }
 
     public Course() {
+    }
+
+    public void setCourseKey(String courseKey) {
+        this.courseKey = courseKey;
     }
 
     @Exclude

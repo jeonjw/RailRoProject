@@ -1,5 +1,6 @@
 package kr.ac.ajou.railroproject;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +27,17 @@ public class CourseModel {
                         .setQuery(query, Course.class)
                         .build();
 
+
+
         adapter = new FirebaseRecyclerAdapter<Course, CourseViewHolder>(options) {
             @Override
             protected void onBindViewHolder(CourseViewHolder holder, int position, Course model) {
-                holder.bindCourse(getItem(position));
+                Course course = new Course();
+                course = getItem(position);
+                String strs[] = String.valueOf(getRef(position)).split("/");
+                course.setCourseKey(strs[strs.length-1]);
+
+                holder.bindCourse(course);
             }
 
             @Override
