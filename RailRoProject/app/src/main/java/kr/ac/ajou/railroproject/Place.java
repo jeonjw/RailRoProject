@@ -17,9 +17,10 @@ public class Place {
 
     public Place(){}
 
-    public Place(String placeName, String courseContent){
+    public Place(String placeName, String courseContent, List imageUrlList){
         this.placeName = placeName;
         this.placeContent = courseContent;
+        this.imageUrlList = imageUrlList;
     }
 
     public String getPlaceName() {
@@ -34,7 +35,4 @@ public class Place {
         return imageUrlList;
     }
 
-    public void addImageUrl(String url){
-        imageUrlList.add(url);
-    }
 }

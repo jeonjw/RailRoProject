@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <EditText
         android:id="@+id/place_name_edit_text"
         android:layout_width="match_parent"
@@ -28,6 +27,16 @@
         android:ems="10"
         android:hint="내용 입력"
         android:inputType="textPersonName" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/place_input_photo_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/place_detail_edit_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp" />
 
     <Button
         android:id="@+id/photo_button"

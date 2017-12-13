@@ -108,7 +108,7 @@
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/tv_course_detail_date"
         app:layout_constraintTop_toTopOf="@+id/tv_course_detail_date"
-        app:srcCompat="@drawable/__picker_ic_broken_image_black_48dp" />
+        app:srcCompat="@drawable/like" />
 
     <ImageView
         android:id="@+id/iv_course_detail_comment_count"
@@ -120,7 +120,7 @@
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/tv_course_detail_like_count"
         app:layout_constraintTop_toTopOf="@+id/tv_course_detail_like_count"
-        app:srcCompat="@drawable/__picker_checkbox_marked" />
+        app:srcCompat="@drawable/comment_icon" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/course_detail_recycler_view"
