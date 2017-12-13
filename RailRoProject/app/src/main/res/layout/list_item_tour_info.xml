@@ -14,15 +14,24 @@
 
         <ImageView
             android:id="@+id/tour_info_image_view"
-            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:layout_height="220dp"
             android:layout_width="match_parent" />
 
         <TextView
+            android:gravity="center"
             android:id="@+id/tour_info_title_text_view"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:padding="10dp"
             android:text="ddd" />
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tour_info_tel_number_text_view"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:text="010 4139 1939" />
     </LinearLayout>
 </android.support.v7.widget.CardView>
 

@@ -74,8 +74,12 @@ public class TourApiReader {
         });
     }
 
-    public void readTourSpot(String areaCode, String detailAreaCode) {
-        Call<TourRepo.TourSpotRepo> call = service.getTourSpotRetrofit("areaBasedList", key, areaCode, detailAreaCode,null, null,"ETC", "test", "json");
+    public void readTourInfo(String base , String areaCode, String detailAreaCode, String mapX, String mapY, String radius, String contentId,String keyword) {
+        Call<TourRepo.TourSpotRepo> call = service.getTourSpotRetrofit(base, key,null,
+                areaCode, detailAreaCode,
+                mapX,mapY,radius,
+                "1000000", contentId,keyword,
+                "ETC", "test", "json");
 
         call.enqueue(new Callback<TourRepo.TourSpotRepo>() {
             @Override
@@ -91,7 +95,8 @@ public class TourApiReader {
 
             @Override
             public void onFailure(Call<TourRepo.TourSpotRepo> call, Throwable t) {
-
+                System.out.println(t.getMessage());
+                System.out.println(call.request());
             }
         });
 
