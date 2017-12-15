@@ -34,6 +34,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".TourInfo.TourDetailActivity" />
+        <activity android:name="MapActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC5McZQMaAhHAqQAYQsx9MyMntiUfnDlEQ" />
 
     </application>
 

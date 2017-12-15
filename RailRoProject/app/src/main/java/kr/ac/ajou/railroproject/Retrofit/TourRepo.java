@@ -9,6 +9,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.ac.ajou.railroproject.TourInfo.TourDetailRepo;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -347,6 +348,17 @@ public class TourRepo {
                 @Query("numOfRows") String numOfRows,
                 @Query("contentTypeId") String contentTypeId,
                 @Query(value = "keyword", encoded = true) String keyword,
+                @Query("MobileOS") String MobileOS,
+                @Query("MobileApp") String MobileApp,
+                @Query("_type") String _type);
+
+        @GET("{request}")
+        Call<TourDetailRepo> getTourDetailInfo(
+                @Path("request") String request,
+                @Query(value = "ServiceKey", encoded = true) String ServiceKey,
+                @Query("numOfRows") String numOfRows,
+                @Query("contentId") String contentId,
+                @Query("contentTypeId") String contentTypeId,
                 @Query("MobileOS") String MobileOS,
                 @Query("MobileApp") String MobileApp,
                 @Query("_type") String _type);

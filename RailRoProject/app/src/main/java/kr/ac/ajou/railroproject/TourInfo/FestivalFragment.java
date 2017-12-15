@@ -24,6 +24,6 @@ public class FestivalFragment extends BaseTourFragment {
 
     @Override
     public String getContentTypeId() {
-        return null;
+        return "15";
     }
 }

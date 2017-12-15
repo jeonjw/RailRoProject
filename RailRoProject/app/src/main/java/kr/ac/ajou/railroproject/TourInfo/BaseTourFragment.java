@@ -18,7 +18,6 @@ import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -217,7 +216,7 @@ public abstract class BaseTourFragment extends Fragment implements LocationListe
                     e.printStackTrace();
                 }
                 apiReader.readTourInfo("searchKeyword",
-                        null,
+                        String.valueOf(currentAreaCode),
                         null,
                         null, null, null,
                         getContentTypeId(), keyword);
@@ -238,6 +237,11 @@ public abstract class BaseTourFragment extends Fragment implements LocationListe
 
             @Override
             public boolean onMenuItemActionCollapse(MenuItem menuItem) {
+                apiReader.readTourInfo(getApiRequest(),
+                        String.valueOf(currentAreaCode),
+                        String.valueOf(currentDetailAreaCode),
+                        null, null, null,
+                        getContentTypeId(), null);
                 return true;
             }
         });
