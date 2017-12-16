@@ -11,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -31,12 +32,13 @@ public class PlaceInputDialog extends DialogFragment {
 
     private OnEnrollmentListener onEnrollmentListener;
     private RecyclerView imageRecyclerView;
-    private List<String> selectedPhotos;
-    private PhotoAdapter photoAdapter;
+    private static List<String> selectedPhotos;
+    private static PhotoAdapter photoAdapter;
 
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_place_input_dialog, null);
         Button photoButton = view.findViewById(R.id.photo_button);
         imageRecyclerView = view.findViewById(R.id.place_input_photo_recycler_view);
@@ -68,6 +70,7 @@ public class PlaceInputDialog extends DialogFragment {
                 String placeName = placeNameEditText.getText().toString();
                 String placeDetail = placeDetailEditText.getText().toString();
                 Place place = new Place(placeName,placeDetail, selectedPhotos);
+
                 onEnrollmentListener.onEnroll(place);
                 dismiss();
             }
@@ -92,21 +95,9 @@ public class PlaceInputDialog extends DialogFragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK &&
-                (requestCode == PhotoPicker.REQUEST_CODE || requestCode == PhotoPreview.REQUEST_CODE)) {
 
-            List<String> photos = null;
-            if (data != null)
-                photos = data.getStringArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS);
-
-            selectedPhotos.clear();
-
-            if (photos != null)
-                selectedPhotos.addAll(photos);
-
-            photoAdapter.notifyDataSetChanged();
-        }
     }
 
     private ArrayList<InputStream> getInputStreamFromUri(List<String> photoInputStreamList) {
@@ -125,5 +116,23 @@ public class PlaceInputDialog extends DialogFragment {
             e.printStackTrace();
         }
         return inputStreamList;
+    }
+
+    public static void changeData(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode == RESULT_OK &&
+                (requestCode == PhotoPicker.REQUEST_CODE || requestCode == PhotoPreview.REQUEST_CODE)) {
+
+            List<String> photos = null;
+            if (data != null)
+                photos = data.getStringArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS);
+
+            selectedPhotos.clear();
+
+            if (photos != null)
+                selectedPhotos.addAll(photos);
+
+            photoAdapter.notifyDataSetChanged();
+        }
     }
 }

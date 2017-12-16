@@ -1,8 +1,11 @@
 package kr.ac.ajou.railroproject.Retrofit;
 
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -150,53 +153,78 @@ public class TourRepo {
                 public static class Items {
 
                     @SerializedName("item")
-                    public List<Item> itemList = new ArrayList<>();
+                    public List<Item> itemList;
 
                     public List<Item> getItemList() {
                         return itemList;
                     }
 
-
                     public static class Item {
-                        @SerializedName("addr1") String addr1;
+                        @SerializedName("addr1")
+                        String addr1;
 
-                        @SerializedName("addr2") String addr2;
+                        @SerializedName("addr2")
+                        String addr2;
 
-                        @SerializedName("areacode") int areacode;
+                        @SerializedName("areacode")
+                        int areacode;
 
-                        @SerializedName("cat1") String cat1;
+                        @SerializedName("cat1")
+                        String cat1;
 
-                        @SerializedName("cat2") String cat2;
+                        @SerializedName("cat2")
+                        String cat2;
 
-                        @SerializedName("cat3") String cat3;
+                        @SerializedName("cat3")
+                        String cat3;
 
-                        @SerializedName("contentid") int contentid;
+                        @SerializedName("contentid")
+                        int contentid;
 
-                        @SerializedName("contenttypeid") int contenttypeid;
+                        @SerializedName("contenttypeid")
+                        int contenttypeid;
 
-                        @SerializedName("createdtime") long createdtime;
+                        @SerializedName("createdtime")
+                        long createdtime;
 
-                        @SerializedName("firstimage") String firstimage;
+                        @SerializedName("eventstarttime")
+                        int eventstarttime;
 
-                        @SerializedName("firstimage2") String firstimage2;
+                        @SerializedName("eventendtime")
+                        int eventendtime;
 
-                        @SerializedName("mapx") double mapx;
+                        @SerializedName("firstimage")
+                        String firstimage;
 
-                        @SerializedName("mapy") double mapy;
+                        @SerializedName("firstimage2")
+                        String firstimage2;
 
-                        @SerializedName("mlevel") int mlevel;
+                        @SerializedName("mapx")
+                        double mapx;
 
-                        @SerializedName("modifiedtime") long modifiedtime;
+                        @SerializedName("mapy")
+                        double mapy;
 
-                        @SerializedName("readcount") int readcount;
+                        @SerializedName("mlevel")
+                        int mlevel;
 
-                        @SerializedName("sigungucode") int sigungucode;
+                        @SerializedName("modifiedtime")
+                        long modifiedtime;
 
-                        @SerializedName("tel") String tel;
+                        @SerializedName("readcount")
+                        int readcount;
 
-                        @SerializedName("title") String title;
+                        @SerializedName("sigungucode")
+                        int sigungucode;
 
-                        @SerializedName("zipcode") String zipcode;
+                        @SerializedName("tel")
+                        String tel;
+
+                        @SerializedName("title")
+                        String title;
+
+                        @SerializedName("zipcode")
+                        String zipcode;
 
                         public String getAddr1() {
                             return addr1;
@@ -277,6 +305,14 @@ public class TourRepo {
                         public String getZipcode() {
                             return zipcode;
                         }
+
+                        public int getEventstarttime() {
+                            return eventstarttime;
+                        }
+
+                        public int getEventendtime() {
+                            return eventendtime;
+                        }
                     }
 
                 }
@@ -302,16 +338,19 @@ public class TourRepo {
         Call<TourRepo.TourSpotRepo> getTourSpotRetrofit(
                 @Path("request") String request,
                 @Query(value = "ServiceKey", encoded = true) String ServiceKey,
+                @Query("arrange") String arrange,
                 @Query("areaCode") String areaCode,
-                @Query("sigungucode") String sigungucode,
+                @Query("sigunguCode") String sigunguCode,
+                @Query("mapX") String mapX,
+                @Query("mapY") String mapY,
+                @Query("radius") String radius,
                 @Query("numOfRows") String numOfRows,
                 @Query("contentTypeId") String contentTypeId,
+                @Query(value = "keyword", encoded = true) String keyword,
                 @Query("MobileOS") String MobileOS,
                 @Query("MobileApp") String MobileApp,
                 @Query("_type") String _type);
     }
-
-
 
 
 }

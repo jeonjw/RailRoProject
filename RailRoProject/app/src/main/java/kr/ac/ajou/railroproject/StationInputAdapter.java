@@ -1,29 +1,84 @@
 package kr.ac.ajou.railroproject;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class StationInputAdapter extends RecyclerView.Adapter<StationInputViewHolder> {
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+
+public class StationInputAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    private static final int TYPE_ITEM = 1;
+    private static final int TYPE_FOOTER = 2;
+
     private int stationCount;
-    @Override
-    public StationInputViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_station_add, parent, false);
-        return new StationInputViewHolder(itemView);
+    private List<Station> stationList = new ArrayList<Station>();
+
+    public StationInputAdapter(List<Station> stationList){
+        this.stationList = stationList;
     }
 
     @Override
-    public void onBindViewHolder(StationInputViewHolder holder, int position) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
+        View itemView;
+
+        if(viewType == TYPE_ITEM){
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_station_add, parent, false);
+
+            return new StationInputViewHolder(itemView);
+        }else if (viewType == TYPE_FOOTER){
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_station_add_footer, parent, false);
+
+            return new StationInputFooterViewHolder(itemView);
+        }
+
+        return null;
+
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if (holder instanceof StationInputViewHolder) {
+            //뷰 타입이 아이템일 경우
+            //StationInputViewHolder item_holder = (StationInputViewHolder) holder;
+        } else if (holder instanceof StationInputFooterViewHolder) {
+            //뷰타입이 푸터 생성하기 버튼일 경우
+
+        }
     }
 
     @Override
     public int getItemCount() {
-        return stationCount;
+        return stationList.size()+1;
     }
 
     public void addInputView(){
         stationCount++;
+    }
+
+    //뷰타입 정하기
+    @Override
+    public int getItemViewType(int position) {
+        if (isPositionFooter(position)) {
+            return TYPE_FOOTER;
+        }
+        return TYPE_ITEM;
+    }
+
+    public List<Station> getStationList(){
+        return stationList;
+    }
+
+    //true가 반환되면 리스트의 끝임을 알수있다.
+    private boolean isPositionFooter(int position) {
+        return position == stationList.size();
     }
 }

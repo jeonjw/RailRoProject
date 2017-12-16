@@ -36,4 +36,6 @@ public class CourseFragment extends Fragment {
 
         return view;
     }
+
+
 }

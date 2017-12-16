@@ -40,7 +40,7 @@ public class CourseViewHolder extends RecyclerView.ViewHolder {
         ivComment = itemView.findViewById(R.id.iv_course_item_comment);
         tvCommentCount = itemView.findViewById(R.id.tv_course_item_comment_count);
 
-        ivProfile.setImageDrawable(ContextCompat.getDrawable(ivLike.getContext(), R.drawable.like));
+        ivProfile.setImageDrawable(ContextCompat.getDrawable(ivProfile.getContext(), R.drawable.like));
         ivLike.setImageDrawable(ContextCompat.getDrawable(ivLike.getContext(), R.drawable.like));
         ivComment.setImageDrawable(ContextCompat.getDrawable(ivComment.getContext(), R.drawable.like));
 

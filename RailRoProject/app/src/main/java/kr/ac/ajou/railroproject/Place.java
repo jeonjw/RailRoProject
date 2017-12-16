@@ -2,6 +2,7 @@ package kr.ac.ajou.railroproject;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * Created by admin on 2017-11-03.
  */
 
-public class Place {
+public class Place implements Serializable{
 
     private String placeName;
     private String placeContent;

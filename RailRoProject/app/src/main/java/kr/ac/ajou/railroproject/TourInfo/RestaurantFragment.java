@@ -9,11 +9,20 @@ import android.view.ViewGroup;
 import kr.ac.ajou.railroproject.R;
 
 
-public class RestaurantFragment extends android.support.v4.app.Fragment {
-    @Nullable
+public class RestaurantFragment extends BaseTourFragment {
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_restaurant, container, false);
-        return view;
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        view.findViewById(R.id.location_based_search).setVisibility(View.GONE);
+    }
+
+    @Override
+    public String getApiRequest() {
+        return "areaBasedList";
+    }
+
+    @Override
+    public String getContentTypeId() {
+        return "39";
     }
 }

@@ -18,6 +18,10 @@ class Station implements Serializable{
         this.date = date;
     }
 
+    public void setStationName(String stationName) {
+        this.stationName = stationName;
+    }
+
     public String getStationName() {
         return stationName;
     }

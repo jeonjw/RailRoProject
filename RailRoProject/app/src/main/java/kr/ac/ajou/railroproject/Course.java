@@ -56,6 +56,10 @@ public class Course implements Parcelable{
         this.courseKey = courseKey;
     }
 
+    public void setStationList(List<Station> stationList) {
+        this.stationList = stationList;
+    }
+
     @Exclude
     public String getCourseKey() {
         return courseKey;
