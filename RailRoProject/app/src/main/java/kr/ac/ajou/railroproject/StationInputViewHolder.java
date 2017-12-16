@@ -6,26 +6,19 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
-
-import java.util.List;
 
 public class StationInputViewHolder extends RecyclerView.ViewHolder {
     private EditText stationNameEditText;
     private RecyclerView recyclerView;
     private FloatingActionButton floatingActionButton;
     private PlaceAdapter placeAdapter;
-    private Station station = new Station();
 
     public StationInputViewHolder(View itemView) {
         super(itemView);
         final Context context = itemView.getContext();
-        stationNameEditText = itemView.findViewById(R.id.station_name_edit_text);
+        stationNameEditText = itemView.findViewById(R.id.course_name_edit_text);
         recyclerView = itemView.findViewById(R.id.place_recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(itemView.getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -47,7 +40,7 @@ public class StationInputViewHolder extends RecyclerView.ViewHolder {
                     @Override
                     public void onEnroll(Place place) {
                         placeAdapter.addPlace(place);
-                        station.addPlace(place);
+//                        station.addPlace(place);
                         System.out.println("TEST " + placeAdapter.getItemCount());
                     }
 
@@ -57,6 +50,11 @@ public class StationInputViewHolder extends RecyclerView.ViewHolder {
             }
         });
 
+    }
+
+    public Station getStation() {
+        return new Station(stationNameEditText.getText().toString(),
+                "20140404",placeAdapter.getPlaceList());
     }
 
 }

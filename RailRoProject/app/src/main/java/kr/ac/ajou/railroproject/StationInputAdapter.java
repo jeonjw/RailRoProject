@@ -1,16 +1,11 @@
 package kr.ac.ajou.railroproject;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 public class StationInputAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -20,6 +15,7 @@ public class StationInputAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private int stationCount;
     private List<Station> stationList = new ArrayList<Station>();
+    private List<StationInputViewHolder> holderList = new ArrayList<>();
 
     public StationInputAdapter(List<Station> stationList){
         this.stationList = stationList;
@@ -32,8 +28,9 @@ public class StationInputAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         if(viewType == TYPE_ITEM){
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_station_add, parent, false);
-
-            return new StationInputViewHolder(itemView);
+            StationInputViewHolder viewHolder =  new StationInputViewHolder(itemView);
+            holderList.add(viewHolder);
+            return viewHolder;
         }else if (viewType == TYPE_FOOTER){
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_station_add_footer, parent, false);
 
@@ -75,6 +72,15 @@ public class StationInputAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public List<Station> getStationList(){
         return stationList;
+    }
+
+    public ArrayList<Station> finish() {
+        ArrayList<Station> tempStationList = new ArrayList<>();
+        for(StationInputViewHolder holder : holderList){
+            tempStationList.add(holder.getStation());
+        }
+
+        return tempStationList;
     }
 
     //true가 반환되면 리스트의 끝임을 알수있다.

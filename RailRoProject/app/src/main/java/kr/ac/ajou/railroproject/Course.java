@@ -32,6 +32,12 @@ public class Course implements Parcelable{
         stationList = in.readArrayList(null);
     }
 
+    public Course(String title, String UID, List<Station> stationList) {
+        this.title = title;
+        this.UID = UID;
+        this.stationList = stationList;
+    }
+
     @Exclude
     public static final Creator<Course> CREATOR = new Creator<Course>() {
         @Override
