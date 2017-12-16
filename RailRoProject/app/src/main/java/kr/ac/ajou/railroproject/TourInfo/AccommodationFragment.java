@@ -22,6 +22,6 @@ public class AccommodationFragment extends BaseTourFragment {
 
     @Override
     public String getContentTypeId() {
-        return null;
+        return "32";
     }
 }

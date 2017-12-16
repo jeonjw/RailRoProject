@@ -20,7 +20,6 @@ import android.widget.Spinner;
 import android.widget.ToggleButton;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.storage.FirebaseStorage;
 
 import java.io.File;
 import java.io.InputStream;
