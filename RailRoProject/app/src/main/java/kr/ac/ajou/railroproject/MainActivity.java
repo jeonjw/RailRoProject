@@ -19,8 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.ac.ajou.railroproject.Board.BoardTabFragment;
+<<<<<<< HEAD
+import kr.ac.ajou.railroproject.MyInfo.MyInfoFragment;
+=======
 import kr.ac.ajou.railroproject.Course.CourseFragment;
 import kr.ac.ajou.railroproject.Course.PlaceInputDialog;
+>>>>>>> 741fca127de6c356e117d8e838a336af00d47d50
 import kr.ac.ajou.railroproject.TourInfo.TravelInfoTabFragment;
 
 public class MainActivity extends AppCompatActivity {
