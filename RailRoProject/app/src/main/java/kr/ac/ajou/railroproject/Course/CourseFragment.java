@@ -14,12 +14,15 @@ import kr.ac.ajou.railroproject.R;
 
 
 public class CourseFragment extends Fragment {
+
+    private RecyclerView courseRecyclerView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_course, container, false);
 
-        RecyclerView courseRecyclerView = view.findViewById(R.id.course_list);
+        courseRecyclerView = view.findViewById(R.id.course_list);
         CourseModel courseModel = new CourseModel();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         courseRecyclerView.setLayoutManager(layoutManager);
@@ -30,7 +33,7 @@ public class CourseFragment extends Fragment {
         courseAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.main_container,new CourseAddFragment())
+                getFragmentManager().beginTransaction().replace(R.id.main_container, new CourseAddFragment())
                         .addToBackStack(null).commit();
             }
         });
@@ -39,5 +42,7 @@ public class CourseFragment extends Fragment {
         return view;
     }
 
-
+    public RecyclerView getCourseRecyclerView() {
+        return courseRecyclerView;
+    }
 }
