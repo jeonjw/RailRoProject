@@ -19,7 +19,7 @@
         android:ems="10"
         android:hint="역이름"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_date_picker"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,10 +40,10 @@
         android:id="@+id/place_recycler_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tv_date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/course_name_edit_text" />
@@ -57,5 +57,26 @@
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="@+id/place_add_button"
         app:layout_constraintEnd_toStartOf="@+id/place_add_button" />
+
+    <ImageButton
+        android:id="@+id/btn_date_picker"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/calendar"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/course_name_edit_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/course_name_edit_text"
+        app:srcCompat="@drawable/calendar" />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/place_recycler_view" />
 
 </android.support.constraint.ConstraintLayout>

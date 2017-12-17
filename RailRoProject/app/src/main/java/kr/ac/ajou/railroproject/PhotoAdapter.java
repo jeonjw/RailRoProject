@@ -1,9 +1,14 @@
 package kr.ac.ajou.railroproject;
 
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,4 +50,5 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoViewHolder> {
     public int getItemCount() {
         return photoPaths.size();
     }
+
 }
