@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+import kr.ac.ajou.railroproject.GlideApp;
 import kr.ac.ajou.railroproject.R;
 
 /**
@@ -23,6 +25,7 @@ public class CourseDetailFragment extends Fragment {
     private TextView tvCourseDetailCommentCount;
     private TextView tvCourseDetailHitCount;
     private RecyclerView courseRecyclerView;
+    private CircleImageView profileImgview;
 
     @Nullable
     @Override
@@ -36,18 +39,19 @@ public class CourseDetailFragment extends Fragment {
         tvCourseDetailLikeCount =view.findViewById(R.id.tv_course_detail_like_count);
         tvCourseDetailCommentCount =view.findViewById(R.id.tv_course_detail_comment_count);
         tvCourseDetailHitCount =view.findViewById(R.id.tv_course_detail_hit_count);
+        profileImgview = view.findViewById(R.id.iv_course_detail_profile);
+        courseRecyclerView = view.findViewById(R.id.course_detail_recycler_view);
 
         tvCourseDetailTitle.setText(""+curCourse.getTitle());
         tvCourseDetailLikeCount.setText(""+curCourse.getLikeCount());
         tvCourseDetailCommentCount.setText(""+curCourse.getCommentCount());
         tvCourseDetailHitCount.setText(""+(curCourse.getHitCount()+1));
-        courseRecyclerView = view.findViewById(R.id.course_detail_recycler_view);
+        GlideApp.with(profileImgview).load(curCourse.getProfileImageURL()).fitCenter().into(profileImgview);
 
         CourseDetailAdapter courseDetailAdapter = new CourseDetailAdapter(curCourse.getStationList(), curCourse);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         courseRecyclerView.setLayoutManager(layoutManager);
         courseRecyclerView.setAdapter(courseDetailAdapter);
-
 
         return view;
     }
