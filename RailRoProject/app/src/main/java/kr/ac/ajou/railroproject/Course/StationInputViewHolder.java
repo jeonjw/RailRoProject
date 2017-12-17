@@ -40,7 +40,7 @@ public class StationInputViewHolder extends RecyclerView.ViewHolder {
         recyclerView = itemView.findViewById(R.id.place_recycler_view);
         btnDatePicker = itemView.findViewById(R.id.btn_date_picker);
         LinearLayoutManager layoutManager = new LinearLayoutManager(itemView.getContext());
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(4, OrientationHelper.VERTICAL));
+        recyclerView.setLayoutManager(layoutManager);
         placeAdapter = new PlaceAdapter();
 
         recyclerView.setAdapter(placeAdapter);
