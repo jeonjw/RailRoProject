@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -17,10 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.ac.ajou.railroproject.Board.BoardTabFragment;
-import kr.ac.ajou.railroproject.Retrofit.TourApiReader;
+import kr.ac.ajou.railroproject.MyInfo.MyInfoFragment;
 import kr.ac.ajou.railroproject.TourInfo.TravelInfoTabFragment;
-import me.iwf.photopicker.PhotoPicker;
-import me.iwf.photopicker.PhotoPreview;
 
 public class MainActivity extends AppCompatActivity {
     private List<String> selectedPhotos;
