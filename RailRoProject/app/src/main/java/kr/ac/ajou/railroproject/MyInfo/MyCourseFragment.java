@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -25,13 +26,18 @@ public class MyCourseFragment extends CourseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(R.id.tv_recommend_course).setVisibility(View.INVISIBLE);
+        view.findViewById(R.id.place_add_button).setVisibility(View.INVISIBLE);
+
+        createAdapter();
+
+        getCourseRecyclerView().setAdapter(adapter);
     }
 
     private void createAdapter() {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
         Query query = databaseReference
-                .child("Course");
+                .child("Course").orderByChild("uid").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         FirebaseRecyclerOptions<Course> options =
                 new FirebaseRecyclerOptions.Builder<Course>()
@@ -42,8 +48,9 @@ public class MyCourseFragment extends CourseFragment {
         adapter = new FirebaseRecyclerAdapter<Course, CourseViewHolder>(options) {
             @Override
             protected void onBindViewHolder(CourseViewHolder holder, int position, Course model) {
-                Course course = new Course();
+                Course course;
                 course = getItem(position);
+                System.out.println("Test" + course.getTitle());
                 String strs[] = String.valueOf(getRef(position)).split("/");
                 course.setCourseKey(strs[strs.length - 1]);
 
@@ -61,4 +68,6 @@ public class MyCourseFragment extends CourseFragment {
         };
         adapter.startListening();
     }
+
+
 }

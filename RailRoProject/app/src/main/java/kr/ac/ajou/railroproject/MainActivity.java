@@ -19,18 +19,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.ac.ajou.railroproject.Board.BoardTabFragment;
-<<<<<<< HEAD
 import kr.ac.ajou.railroproject.MyInfo.MyInfoFragment;
-=======
 import kr.ac.ajou.railroproject.Course.CourseFragment;
 import kr.ac.ajou.railroproject.Course.PlaceInputDialog;
->>>>>>> 741fca127de6c356e117d8e838a336af00d47d50
 import kr.ac.ajou.railroproject.TourInfo.TravelInfoTabFragment;
 
 public class MainActivity extends AppCompatActivity {
     private List<String> selectedPhotos;
     private PhotoAdapter photoAdapter;
     private Fragment fragment = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         Window window = this.getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorPrimary));
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
 
         toolbarTextView.setText("RAILRONET");
         setSupportActionBar(toolbar);
@@ -50,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         final FragmentManager fm = getSupportFragmentManager();
         final Fragment courseFragment = new CourseFragment();
         fm.beginTransaction().add(R.id.main_container, courseFragment).commit();
-
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.main_bottom_navigation);

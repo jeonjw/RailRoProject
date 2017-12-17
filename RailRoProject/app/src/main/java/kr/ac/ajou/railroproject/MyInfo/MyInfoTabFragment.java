@@ -11,8 +11,6 @@ import java.util.List;
 
 import kr.ac.ajou.railroproject.BaseTabFragment;
 import kr.ac.ajou.railroproject.Board.BoardAccompaniedFragment;
-import kr.ac.ajou.railroproject.Board.BoardRecommendationFragment;
-import kr.ac.ajou.railroproject.CourseFragment;
 
 public class MyInfoTabFragment extends BaseTabFragment {
 
@@ -26,7 +24,6 @@ public class MyInfoTabFragment extends BaseTabFragment {
     public void setTabText() {
         getTabLayout().addTab(getTabLayout().newTab().setText("내 코스"));
         getTabLayout().addTab(getTabLayout().newTab().setText("내 게시물"));
-        getTabLayout().addTab(getTabLayout().newTab().setText("보관함"));
     }
 
     @Override
@@ -34,7 +31,6 @@ public class MyInfoTabFragment extends BaseTabFragment {
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(new MyCourseFragment());
         fragmentList.add(new BoardAccompaniedFragment());
-        fragmentList.add(new BoardRecommendationFragment());
         return fragmentList;
     }
 }
