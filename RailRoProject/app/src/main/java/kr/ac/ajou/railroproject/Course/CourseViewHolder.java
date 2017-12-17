@@ -29,7 +29,7 @@ public class CourseViewHolder extends RecyclerView.ViewHolder {
 
     private Context context;
 
-    CourseViewHolder(View itemView) {
+    public CourseViewHolder(View itemView) {
         super(itemView);
 
         context = itemView.getContext();

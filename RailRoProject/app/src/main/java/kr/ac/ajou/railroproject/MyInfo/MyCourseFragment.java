@@ -13,7 +13,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 
+import kr.ac.ajou.railroproject.Course.Course;
 import kr.ac.ajou.railroproject.Course.CourseFragment;
+import kr.ac.ajou.railroproject.Course.CourseViewHolder;
 import kr.ac.ajou.railroproject.R;
 
 public class MyCourseFragment extends CourseFragment {
