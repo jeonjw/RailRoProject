@@ -6,17 +6,25 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import kr.ac.ajou.railroproject.Board.BoardTabFragment;
+<<<<<<< HEAD
 import kr.ac.ajou.railroproject.MyInfo.MyInfoFragment;
+=======
+import kr.ac.ajou.railroproject.Course.CourseFragment;
+import kr.ac.ajou.railroproject.Course.PlaceInputDialog;
+>>>>>>> 741fca127de6c356e117d8e838a336af00d47d50
 import kr.ac.ajou.railroproject.TourInfo.TravelInfoTabFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
         selectedPhotos = new ArrayList<String>();
         Toolbar toolbar = findViewById(R.id.toolbar);
         TextView toolbarTextView = toolbar.findViewById(R.id.toolbar_title_text_view);
+
+        Window window = this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorPrimary));
 
         toolbarTextView.setText("RAILRONET");
         setSupportActionBar(toolbar);

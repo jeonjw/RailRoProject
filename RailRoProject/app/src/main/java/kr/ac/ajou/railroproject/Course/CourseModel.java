@@ -1,7 +1,5 @@
-package kr.ac.ajou.railroproject.MyInfo;
+package kr.ac.ajou.railroproject.Course;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,20 +10,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-
-import kr.ac.ajou.railroproject.Course.CourseFragment;
 import kr.ac.ajou.railroproject.R;
 
-public class MyCourseFragment extends CourseFragment {
+
+public class CourseModel {
     private FirebaseRecyclerAdapter<Course, CourseViewHolder> adapter;
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        view.findViewById(R.id.tv_recommend_course).setVisibility(View.INVISIBLE);
-    }
+    public CourseModel() {
 
-    private void createAdapter() {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
         Query query = databaseReference
@@ -37,13 +29,14 @@ public class MyCourseFragment extends CourseFragment {
                         .build();
 
 
+
         adapter = new FirebaseRecyclerAdapter<Course, CourseViewHolder>(options) {
             @Override
             protected void onBindViewHolder(CourseViewHolder holder, int position, Course model) {
                 Course course = new Course();
                 course = getItem(position);
                 String strs[] = String.valueOf(getRef(position)).split("/");
-                course.setCourseKey(strs[strs.length - 1]);
+                course.setCourseKey(strs[strs.length-1]);
 
                 holder.bindCourse(course);
             }
@@ -59,4 +52,12 @@ public class MyCourseFragment extends CourseFragment {
         };
         adapter.startListening();
     }
+
+
+
+    public FirebaseRecyclerAdapter<Course, CourseViewHolder> getAdapter() {
+        return adapter;
+    }
+
+
 }
