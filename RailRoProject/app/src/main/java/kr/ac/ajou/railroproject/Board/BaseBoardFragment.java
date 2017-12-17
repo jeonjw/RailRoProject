@@ -20,7 +20,6 @@ import kr.ac.ajou.railroproject.R;
 public abstract class BaseBoardFragment extends Fragment {
     private RecyclerView recyclerView;
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -53,5 +52,7 @@ public abstract class BaseBoardFragment extends Fragment {
         recyclerView.setAdapter(boardModel.getAdapter());
     }
 
-
+    public RecyclerView getRecyclerView() {
+        return recyclerView;
+    }
 }

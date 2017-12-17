@@ -30,7 +30,7 @@ public class MyInfoTabFragment extends BaseTabFragment {
     public List<Fragment> setFragmentList() {
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(new MyCourseFragment());
-        fragmentList.add(new BoardAccompaniedFragment());
+        fragmentList.add(new MyBoardFragment());
         return fragmentList;
     }
 }
