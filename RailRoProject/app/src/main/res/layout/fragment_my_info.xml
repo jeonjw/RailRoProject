@@ -14,9 +14,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <fragment
+    <FrameLayout
         android:id="@+id/your_id_unique"
-        class="kr.ac.ajou.railroproject.MyInfo.MyInfoTabFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"

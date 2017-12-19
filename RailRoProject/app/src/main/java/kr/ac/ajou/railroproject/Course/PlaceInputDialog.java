@@ -45,6 +45,7 @@ public class PlaceInputDialog extends DialogFragment {
     private RecyclerView imageRecyclerView;
     private static List<String> selectedPhotos;
     private static PhotoAdapter photoAdapter;
+    private static boolean created = false;
 
     @NonNull
     @Override
@@ -58,6 +59,7 @@ public class PlaceInputDialog extends DialogFragment {
         final EditText placeNameEditText = view.findViewById(R.id.place_name_edit_text);
         final EditText placeDetailEditText = view.findViewById(R.id.place_detail_edit_text);
 
+        created = true;
         selectedPhotos = new ArrayList<String>();
 
         photoAdapter = new PhotoAdapter(selectedPhotos);
@@ -83,17 +85,17 @@ public class PlaceInputDialog extends DialogFragment {
 
 
                 if (selectedPhotos.size() != 0) {
-                    Toast.makeText(getContext(), "이미지 업로드 중...",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "이미지 업로드 중...", Toast.LENGTH_SHORT).show();
                     uploadImages(getInputStreamFromUri(selectedPhotos), new OnUploadImageListener() {
                         @Override
                         public void onSuccess(List<String> urlList) {
-                            Place place = new Place(placeName,placeDetail,urlList);
+                            Place place = new Place(placeName, placeDetail, urlList);
                             onEnrollmentListener.onEnroll(place);
                             dismiss();
                         }
                     });
                 } else {
-                    Place place = new Place(placeName,placeDetail);
+                    Place place = new Place(placeName, placeDetail);
                     onEnrollmentListener.onEnroll(place);
                     dismiss();
                 }
@@ -119,10 +121,11 @@ public class PlaceInputDialog extends DialogFragment {
         this.onEnrollmentListener = onEnrollmentListener;
     }
 
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         super.onActivityResult(requestCode, resultCode, data);
+
 
     }
 
@@ -145,6 +148,8 @@ public class PlaceInputDialog extends DialogFragment {
     }
 
     public static void changeData(int requestCode, int resultCode, Intent data) {
+        if (!created)
+            return;
 
         if (resultCode == RESULT_OK &&
                 (requestCode == PhotoPicker.REQUEST_CODE || requestCode == PhotoPreview.REQUEST_CODE)) {
@@ -160,6 +165,7 @@ public class PlaceInputDialog extends DialogFragment {
 
             photoAdapter.notifyDataSetChanged();
         }
+
     }
 
 
@@ -191,4 +197,9 @@ public class PlaceInputDialog extends DialogFragment {
         return UUID.randomUUID().toString();
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        created = false;
+    }
 }

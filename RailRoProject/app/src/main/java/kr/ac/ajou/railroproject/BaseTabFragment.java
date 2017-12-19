@@ -39,7 +39,7 @@ public abstract class BaseTabFragment extends Fragment {
 
         viewPager = view.findViewById(R.id.main_view_pager);
 
-        BaseTabPageAdapter baseTabPageAdapter = new BaseTabPageAdapter(getFragmentManager(), setFragmentList());
+        BaseTabPageAdapter baseTabPageAdapter = new BaseTabPageAdapter(getChildFragmentManager(), setFragmentList());
         viewPager.setAdapter(baseTabPageAdapter);
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));

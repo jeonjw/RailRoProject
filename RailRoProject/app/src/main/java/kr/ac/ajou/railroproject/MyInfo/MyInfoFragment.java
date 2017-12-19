@@ -3,10 +3,12 @@ package kr.ac.ajou.railroproject.MyInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,6 +41,12 @@ public class MyInfoFragment extends Fragment {
         EditText nameEditText = view.findViewById(R.id.my_info_name_edit_text);
         nameEditText.setText(user.getDisplayName());
 
+
+        MyInfoTabFragment myInfoTabFragment = new MyInfoTabFragment();
+
+        FragmentManager fm = getChildFragmentManager();
+        fm.beginTransaction()
+                .add(R.id.your_id_unique, myInfoTabFragment).commit();
 
         return view;
     }

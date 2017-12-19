@@ -48,7 +48,7 @@ public class MyBoardFragment extends BaseBoardFragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Board board = ds.getValue(Board.class);
-                    if(Objects.equals(board.getAuthorUid(), FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                    if (Objects.equals(board.getAuthorUid(), FirebaseAuth.getInstance().getCurrentUser().getUid())) {
                         dataList.add(board);
                         myBoardAdapter.notifyDataSetChanged();
                     }
@@ -69,7 +69,7 @@ public class MyBoardFragment extends BaseBoardFragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Board board = ds.getValue(Board.class);
-                    if(Objects.equals(board.getAuthorUid(), FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                    if (Objects.equals(board.getAuthorUid(), FirebaseAuth.getInstance().getCurrentUser().getUid())) {
                         dataList.add(board);
                         myBoardAdapter.notifyDataSetChanged();
                     }
@@ -89,7 +89,7 @@ public class MyBoardFragment extends BaseBoardFragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Board board = ds.getValue(Board.class);
-                    if(Objects.equals(board.getAuthorUid(), FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                    if (Objects.equals(board.getAuthorUid(), FirebaseAuth.getInstance().getCurrentUser().getUid())) {
                         dataList.add(board);
                         myBoardAdapter.notifyDataSetChanged();
                     }

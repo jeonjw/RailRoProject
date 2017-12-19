@@ -41,7 +41,7 @@ public class CourseAddFragment extends Fragment {
         recyclerView.setAdapter(stationInputAdapter);
 
 
-        Button button = view.findViewById(R.id.tem_add_button);
+        Button button = view.findViewById(R.id.course_add_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,6 +51,8 @@ public class CourseAddFragment extends Fragment {
 
                 DatabaseReference database = FirebaseDatabase.getInstance().getReference();
                 database.child("Course").push().setValue(course);
+
+                getFragmentManager().popBackStack();
             }
         });
 
