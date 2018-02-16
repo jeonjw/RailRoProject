@@ -111,6 +111,7 @@ public class TourApiReader {
                 "1000000", contentId, contentTypeId,
                 "ETC", "test", "json");
 
+
         call.enqueue(new Callback<TourDetailRepo>() {
             @Override
             public void onResponse(Call<TourDetailRepo> call, Response<TourDetailRepo> response) {

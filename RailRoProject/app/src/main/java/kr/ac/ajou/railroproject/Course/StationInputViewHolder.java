@@ -80,7 +80,7 @@ public class StationInputViewHolder extends RecyclerView.ViewHolder {
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                String myFormat = "yyyy-MM-dd"; //In which you need put here
+                String myFormat = "yyyy.MM.dd"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.KOREA);
                 dateStr = sdf.format(myCalendar.getTime());
                 tvDate.setText(dateStr);
